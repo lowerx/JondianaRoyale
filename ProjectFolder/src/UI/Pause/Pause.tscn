@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/UI/Quit/QuitButton.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/UI/QuitTheLevel/MainMenuButton.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/UI/Pause/Pause.gd" type="Script" id=3]
+
+[node name="Pause" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+
+[node name="PauseOverlay" type="ColorRect" parent="."]
+pause_mode = 2
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 896.0
+margin_bottom = 480.0
+color = Color( 0, 0, 0, 0.192157 )
+
+[node name="Label" type="Label" parent="PauseOverlay"]
+margin_right = 40.0
+margin_bottom = 14.0
+
+[node name="PauseMenu" type="VBoxContainer" parent="PauseOverlay"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="MainMenuButton" parent="PauseOverlay/PauseMenu" instance=ExtResource( 2 )]
+
+[node name="QuitButton" parent="PauseOverlay/PauseMenu" instance=ExtResource( 1 )]

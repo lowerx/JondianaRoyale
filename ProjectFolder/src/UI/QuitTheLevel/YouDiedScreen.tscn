@@ -1,0 +1,71 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/ui_theme.tres" type="Theme" id=1]
+[ext_resource path="res://assets/background/background.jpg" type="Texture" id=2]
+[ext_resource path="res://src/UI/YouDiedScreen.gd" type="Script" id=3]
+[ext_resource path="res://assets/game files/buttons/exit.png" type="Texture" id=4]
+[ext_resource path="res://src/UI/MainMenuButton.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/UI/QuitButton.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/UI/Scores.tscn" type="PackedScene" id=7]
+
+[node name="YouDiedScreen" type="Control"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -100
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_scale = Vector2( 0.366627, 0.278751 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -299.161
+margin_top = 302.642
+margin_right = -91.1615
+margin_bottom = 361.642
+rect_scale = Vector2( 2.93371, 2.69359 )
+text = "You Died!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Scores" parent="." instance=ExtResource( 7 )]
+margin_bottom = 122.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -171.0
+margin_top = 37.0
+margin_right = 171.0
+margin_bottom = 393.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MainMenuButton2" parent="VBoxContainer" instance=ExtResource( 5 )]
+margin_right = 342.0
+margin_bottom = 176.0
+
+[node name="QuitButton" parent="VBoxContainer" instance=ExtResource( 6 )]
+margin_top = 180.0
+margin_right = 342.0
+margin_bottom = 356.0
+text = ""
+icon = ExtResource( 4 )
