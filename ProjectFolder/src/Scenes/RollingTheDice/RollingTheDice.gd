@@ -17,7 +17,6 @@ onready var ENEMIES_LIST = [
 
 
 func _ready():
-	
 	AbilitiesRandom.randomize()
 	GunRandom.randomize()
 	EnemiesRandom.randomize()

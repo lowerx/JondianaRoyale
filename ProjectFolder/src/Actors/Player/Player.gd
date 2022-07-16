@@ -76,12 +76,12 @@ func take_damage (dmgToTake):
 	curHp -= dmgToTake
 	if curHp <= 0:
 		ui.update_health_bar(curHp, maxHp)
+		AutoLoad.not_game_scene()
 		die()
 
 
 func die ():
 	queue_free()
-	get_tree().paused = true
 	get_tree().change_scene("res://src/UI/QuitTheLevel/YouDiedScreen.tscn")
 
 

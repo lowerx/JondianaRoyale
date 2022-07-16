@@ -18,7 +18,15 @@ func _ready ():
 	timer.start()
 
 
+func _process(delta):
+	
+	if not AutoLoad._game_scene:
+	
+		queue_free()
+
+
 func _physics_process (delta):
+	
 	var dist = position.distance_to(target.position)
 	if dist > attackDist and dist < chaseDist:
 		var vel = (target.position - position).normalized()
@@ -29,12 +37,6 @@ func _on_Timer_timeout():
 	
 	if position.distance_to(target.position) <= attackDist:
 		target.take_damage(damage)
-
-
-func take_damage (dmgToTake):
-	curHp -= dmgToTake
-	if curHp <= 0:
-		die()
 
 
 func die ():
