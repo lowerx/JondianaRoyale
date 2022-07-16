@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="Project Folder"
-run/main_scene="res://src/Scenes/Levels/TestingLevel.tscn"
+run/main_scene="res://src/UI/MainMenu/MainScreen.tscn"
 config/icon="res://icon.png"
 
 [autoload]
