@@ -14,6 +14,14 @@ var vel = Vector2()
 var facingDir = Vector2()
 
 onready var rayCast = $RayCast2D
+onready var ui = get_node("/root/TestingLevel/UICanvasLayer/UI")
+
+
+func _ready ():
+	ui.update_level_text(curLevel)
+	ui.update_health_bar(curHp, maxHp)
+	ui.update_xp_bar(curXp, xpToNextLevel)
+	ui.update_gold_text(gold)
 
 
 func _physics_process (delta):
@@ -34,8 +42,57 @@ func _physics_process (delta):
 		vel.x += 1
 		facingDir = Vector2(1, 0)
   
-	# normalize the velocity to prevent faster diagonal movement
 	vel = vel.normalized()
   
-	# move the player
 	move_and_slide(vel * moveSpeed, Vector2.ZERO)
+	
+	ui.update_gold_text(gold)
+
+	ui.update_xp_bar(curXp, xpToNextLevel)
+
+	ui.update_level_text(curLevel)
+
+	ui.update_xp_bar(curXp, xpToNextLevel)
+
+	ui.update_health_bar(curHp, maxHp)
+
+
+func give_gold (amount):
+	gold += amount
+
+
+func give_xp (amount):
+	curXp += amount
+	if curXp >= xpToNextLevel:
+		level_up()
+
+
+func level_up ():
+	var overflowXp = curXp - xpToNextLevel
+	xpToNextLevel *= xpToLevelIncreaseRate
+	curXp = overflowXp
+	curLevel += 1
+
+
+func take_damage (dmgToTake):
+	curHp -= dmgToTake
+	if curHp <= 0:
+		die()
+
+
+func die ():
+	get_tree().reload_current_scene()
+
+
+func _process (delta):
+	if Input.is_action_just_pressed("interact"):
+		try_interact()
+
+
+func try_interact ():
+	rayCast.cast_to = facingDir * interactDist
+	if rayCast.is_colliding():
+		if rayCast.get_collider() is KinematicBody2D:
+			rayCast.get_collider().take_damage(damage)
+		elif rayCast.get_collider().has_method("on_interact"):
+			rayCast.get_collider().on_interact(self)
