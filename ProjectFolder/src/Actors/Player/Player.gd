@@ -22,8 +22,8 @@ onready var rayCast = $RayCast2D
 onready var ui = get_node("/root/TestingLevel/UICanvasLayer/UI")
 
 onready var bullet_path = preload("res://src/Objects/Bullet.tscn")
-onready var end_of_gun = $Node2D/EndOfGun
-onready var gun_direction = $Node2D/GunDirection
+onready var end_of_gun = $FirePoint/EndOfGun
+onready var gun_direction = $FirePoint/GunDirection
 
 
 func _ready ():
@@ -100,7 +100,7 @@ func _process (delta):
 		try_interact()
 	if Input.is_action_pressed("shoot"):
 		shoot()
-	$Node2D.look_at(get_global_mouse_position())
+	$FirePoint.look_at(get_global_mouse_position())
 
 
 func get_time():
@@ -117,9 +117,10 @@ func try_interact ():
 
 
 func shoot():
+	
 	if get_time() - fire_time < fire_rate:
 		return
 	fire_time = get_time()
 	var bullet = bullet_path.instance()
-	var direction = (gun_direction.global_position - end_of_gun.global_position).normalized()
+	var direction = (get_global_mouse_position() - end_of_gun.global_position).normalized()
 	emit_signal("player_fired_bullet", bullet, end_of_gun.global_position, direction)

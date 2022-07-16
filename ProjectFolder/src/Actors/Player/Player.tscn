@@ -49,10 +49,7 @@ scale = Vector2( 5, 5 )
 current = true
 script = ExtResource( 3 )
 
-[node name="Node2D" type="Node2D" parent="."]
-position = Vector2( -0.00109863, -307.106 )
+[node name="FirePoint" type="Node2D" parent="."]
+position = Vector2( 0, -307.106 )
 
-[node name="EndOfGun" type="Position2D" parent="Node2D"]
-
-[node name="GunDirection" type="Position2D" parent="Node2D"]
-position = Vector2( -0.000427246, -116.543 )
+[node name="EndOfGun" type="Position2D" parent="FirePoint"]
