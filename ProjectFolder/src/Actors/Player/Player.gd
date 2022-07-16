@@ -3,8 +3,6 @@ extends KinematicBody2D
 var curHp : int = 10
 export var maxHp : int = 10
 export var moveSpeed : int = 250
-export var damage : float = 2.5
-export var fire_rate: float = 1
 var fire_time = 0.0
 
 var gold : int = 0
@@ -16,12 +14,16 @@ var interactDist : int = 70
 var vel = Vector2()
 var facingDir = Vector2()
 
+var gun = null
+
 signal player_fired_bullet(bullet, position, direction)
+signal player_fired_explosion(explosion, position, direction)
 
 onready var rayCast = $RayCast2D
 onready var ui = get_node("/root/TestingLevel/UICanvasLayer/UI")
 
 onready var bullet_path = preload("res://src/Objects/Bullet.tscn")
+onready var explosion_path = preload("res://src/Objects/Explosion.tscn")
 onready var end_of_gun = $FirePoint/EndOfGun
 onready var gun_path = preload("res://src/Objects/Gun/Gun.tscn")
 
@@ -33,7 +35,12 @@ func _ready ():
 	ui.update_xp_bar(curXp, xpToNextLevel)
 	ui.update_gold_text(gold)
 	
-	var gun = gun_path.instance()
+	get_gun()
+
+
+func get_gun():
+	
+	gun = gun_path.instance()
 	add_child(gun)
 	gun.global_position = end_of_gun.global_position
 
@@ -123,7 +130,15 @@ func _process (delta):
 		
 	if Input.is_action_pressed("shoot"):
 		
-		shoot()
+		print("FUST: ", AutoLoad.gun)
+		
+		if AutoLoad.gun["shotability"]:
+		
+			shoot()
+		
+		else:
+			
+			beat()
 		
 	$FirePoint.look_at(get_global_mouse_position())
 
@@ -141,7 +156,7 @@ func try_interact ():
 		
 		if rayCast.get_collider() is KinematicBody2D:
 			
-			rayCast.get_collider().take_damage(damage)
+			rayCast.get_collider().take_damage(AutoLoad.gun["damage"])
 			
 		elif rayCast.get_collider().has_method("on_interact"):
 			
@@ -150,9 +165,22 @@ func try_interact ():
 
 func shoot():
 	
-	if get_time() - fire_time < fire_rate:
+	if get_time() - fire_time < AutoLoad.gun["fire_rate"]:
+		
 		return
+		
 	fire_time = get_time()
 	var bullet = bullet_path.instance()
 	var direction = (get_global_mouse_position() - end_of_gun.global_position).normalized()
 	emit_signal("player_fired_bullet", bullet, end_of_gun.global_position, direction)
+
+
+func beat():
+	
+	if get_time() - fire_time < AutoLoad.gun["fire_rate"]:
+		return
+		
+	fire_time = get_time()
+	var explosion = explosion_path.instance()
+	var direction = (get_global_mouse_position() - end_of_gun.global_position).normalized()
+	emit_signal("player_fired_explosion", explosion, end_of_gun.global_position, direction)

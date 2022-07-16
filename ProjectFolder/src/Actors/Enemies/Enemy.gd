@@ -14,6 +14,7 @@ onready var timer = $Timer
 
 
 func _ready ():
+	
 	timer.wait_time = attackRate
 	timer.start()
 
@@ -21,15 +22,20 @@ func _ready ():
 func _process(delta):
 	
 	if not AutoLoad._game_scene:
+		
 		queue_free()
+		
 	if curHp <= 0:
+		
 		die()
 
 
 func _physics_process (delta):
 	
 	var dist = position.distance_to(target.position)
+	
 	if dist > attackDist and dist < chaseDist:
+		
 		var vel = (target.position - position).normalized()
 		move_and_slide(vel * moveSpeed)
 
@@ -37,15 +43,18 @@ func _physics_process (delta):
 func _on_Timer_timeout():
 	
 	if position.distance_to(target.position) <= attackDist:
+		
 		target.take_damage(damage)
 
 
 func die ():
+	
 	target.give_xp(xpToGive)
 	queue_free()
 
 
-func _on_Area2D_area_entered(area: Area2D) -> void:
+func _on_Area2D_area_entered(area):
 	
-	queue_free()
-	
+	if area.get_name() == "Bullet":
+		
+		self.curHp -= AutoLoad.gun["damage"]

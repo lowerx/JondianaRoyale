@@ -7,13 +7,25 @@ export var time = 0.00
 var start = true
 var _game_scene = false
 
-var bushes = 0.00
-var trees = 0.00
+var location = {
+	"bushes": 0.00,
+	"trees": 0.00
+}
+
 var level = 10.0
 
-var abilities = []
+var ability = {
+	"name": null
+}
 
-var guns = []
+var gun = {
+	"name": null,
+	"damage": 0.00,
+	"damage_range": 0.00,
+	"fire_rate": 0.00,
+	"shotability": null,
+	"bullet_timer": null
+}
 
 var enemies_numbers = []
 var enemies = []
@@ -37,9 +49,18 @@ func not_game_scene():
 
 func reset_values():
 	get_tree().paused = false
-	self.bushes = 0.00
-	self.trees = 0.00
+	self.location = {
+		"bushes": 0.00,
+		"trees": 0.00
+	}
 	self.enemies_numbers = []
 	self.enemies = []
-	self.guns = []
+	self.gun = {
+		"name": null,
+		"damage": 0,
+		"damage_range": 0.00,
+		"fire_rate": 0.00,
+		"shotability": null,
+		"bullet_timer": null
+	}
 	not_game_scene()

@@ -43,21 +43,14 @@ func roll_the_dices():
 	GunRandom = GunRandom.randi_range(1, 6)
 	EnemiesRandom = EnemiesRandom.randi_range(1, 6)
 	
-	for ability in range(0, len(ABILITIES_LIST)):
-		
-		if ABILITIES_LIST[ability] != null:
+	if ABILITIES_LIST[AbilitiesRandom - 1] != null:
 			
-			if AbilitiesRandom - 1 == ability:
-				
-				AutoLoad.abilities.append(ABILITIES_LIST[ability])
+		AutoLoad.ability["name"] = ABILITIES_LIST[AbilitiesRandom - 1]
 	
-	for gun in range(0, len(GUNS_LIST)):
-		
-		if GUNS_LIST[gun] != null:
+	if GUNS_LIST[GunRandom - 1] != null:
 			
-			if GunRandom - 1 == gun:
-			
-				AutoLoad.guns.append(GUNS_LIST[gun])
+		AutoLoad.gun["name"] = GUNS_LIST[GunRandom - 1]
+		create_gun(GUNS_LIST[GunRandom - 1])
 	
 	for enemy in range(0, len(ENEMIES_LIST)):
 		
@@ -74,3 +67,39 @@ func roll_the_dices():
 	print(AbilitiesRandom)
 	print(GunRandom)
 	print(EnemiesRandom)
+
+
+func create_gun(name):
+	
+	if name == 'sword':
+		
+		_complete_gun(80.0, 4.0, 4.0, false)
+	
+	elif name == 'shotgun':
+		
+		_complete_gun(50.0, 5.0, 2.0, true, 0.5)
+		
+	elif name == 'fists':
+		
+		_complete_gun(30.0, 2.0, 1.0, false)
+		
+	elif name == 'rifle':
+		
+		_complete_gun(40.0, 2.0, 3.0, true, 1.0)
+		
+	elif name == 'sniper':
+		
+		_complete_gun(100.0, 1.0, 5.0, true, 2.0)
+		
+	elif name == 'bow':
+		
+		_complete_gun(70.0, 3.0, 2.0, true, 1.0)
+
+
+func _complete_gun(damage, damage_range, periods_between_shots, shotability, bullet_timer=0.1):
+	
+	AutoLoad.gun["damage"] = damage
+	AutoLoad.gun["damage_range"] = damage_range
+	AutoLoad.gun["fire_rate"] = periods_between_shots
+	AutoLoad.gun["shotability"] = shotability
+	AutoLoad.gun["bullet_timer"] = bullet_timer
