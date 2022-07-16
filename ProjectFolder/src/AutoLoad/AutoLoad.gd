@@ -8,6 +8,8 @@ var start = true
 var _game_scene = false
 var bushes = 0.00
 var tree = 0.00
+var level = 1.0
+var enemies_numbers = []
 
 
 func _ready():
