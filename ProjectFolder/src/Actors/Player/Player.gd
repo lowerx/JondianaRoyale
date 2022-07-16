@@ -1,9 +1,12 @@
 extends KinematicBody2D
 
 var curHp : int = 10
-var maxHp : int = 10
-var moveSpeed : int = 250
-var damage : int = 1
+export var maxHp : int = 10
+export var moveSpeed : int = 250
+export var damage : float = 2.5
+export var fire_rate: float = 1
+var fire_time = 0.0
+
 var gold : int = 0
 var curLevel : int = 0
 var curXp : int = 0
@@ -13,8 +16,14 @@ var interactDist : int = 70
 var vel = Vector2()
 var facingDir = Vector2()
 
+signal player_fired_bullet(bullet, position, direction)
+
 onready var rayCast = $RayCast2D
 onready var ui = get_node("/root/TestingLevel/UICanvasLayer/UI")
+
+onready var bullet_path = preload("res://src/Objects/Bullet.tscn")
+onready var end_of_gun = $Node2D/EndOfGun
+onready var gun_direction = $Node2D/GunDirection
 
 
 func _ready ():
@@ -41,6 +50,7 @@ func _physics_process (delta):
 	if Input.is_action_pressed("right"):
 		vel.x += 1
 		facingDir = Vector2(1, 0)
+	
   
 	vel = vel.normalized()
   
@@ -88,6 +98,13 @@ func die ():
 func _process (delta):
 	if Input.is_action_just_pressed("interact"):
 		try_interact()
+	if Input.is_action_pressed("shoot"):
+		shoot()
+	$Node2D.look_at(get_global_mouse_position())
+
+
+func get_time():
+	return OS.get_ticks_msec() / 1000
 
 
 func try_interact ():
@@ -97,3 +114,12 @@ func try_interact ():
 			rayCast.get_collider().take_damage(damage)
 		elif rayCast.get_collider().has_method("on_interact"):
 			rayCast.get_collider().on_interact(self)
+
+
+func shoot():
+	if get_time() - fire_time < fire_rate:
+		return
+	fire_time = get_time()
+	var bullet = bullet_path.instance()
+	var direction = (gun_direction.global_position - end_of_gun.global_position).normalized()
+	emit_signal("player_fired_bullet", bullet, end_of_gun.global_position, direction)

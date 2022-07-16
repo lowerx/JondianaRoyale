@@ -21,8 +21,9 @@ func _ready ():
 func _process(delta):
 	
 	if not AutoLoad._game_scene:
-	
 		queue_free()
+	if curHp <= 0:
+		die()
 
 
 func _physics_process (delta):
@@ -42,3 +43,9 @@ func _on_Timer_timeout():
 func die ():
 	target.give_xp(xpToGive)
 	queue_free()
+
+
+func _on_Area2D_area_entered(area: Area2D) -> void:
+	
+	queue_free()
+	
