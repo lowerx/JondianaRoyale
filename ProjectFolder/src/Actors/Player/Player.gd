@@ -23,31 +23,42 @@ onready var ui = get_node("/root/TestingLevel/UICanvasLayer/UI")
 
 onready var bullet_path = preload("res://src/Objects/Bullet.tscn")
 onready var end_of_gun = $FirePoint/EndOfGun
-onready var gun_direction = $FirePoint/GunDirection
+onready var gun_path = preload("res://src/Objects/Gun/Gun.tscn")
 
 
 func _ready ():
+	
 	ui.update_level_text(curLevel)
 	ui.update_health_bar(curHp, maxHp)
 	ui.update_xp_bar(curXp, xpToNextLevel)
 	ui.update_gold_text(gold)
+	
+	var gun = gun_path.instance()
+	add_child(gun)
+	gun.global_position = end_of_gun.global_position
 
 
 func _physics_process (delta):
   
 	vel = Vector2()
   
-	# inputs
 	if Input.is_action_pressed("up"):
+		
 		vel.y -= 1
 		facingDir = Vector2(0, -1)
+		
 	if Input.is_action_pressed("down"):
+		
 		vel.y += 1
 		facingDir = Vector2(0, 1)
+		
 	if Input.is_action_pressed("left"):
+		
 		vel.x -= 1
 		facingDir = Vector2(-1, 0)
+		
 	if Input.is_action_pressed("right"):
+		
 		vel.x += 1
 		facingDir = Vector2(1, 0)
 	
@@ -66,16 +77,21 @@ func _physics_process (delta):
 
 
 func give_gold (amount):
+	
 	gold += amount
 
 
 func give_xp (amount):
+	
 	curXp += amount
+	
 	if curXp >= xpToNextLevel:
+		
 		level_up()
 
 
 func level_up ():
+	
 	var overflowXp = curXp - xpToNextLevel
 	xpToNextLevel *= xpToLevelIncreaseRate
 	curXp = overflowXp
@@ -83,36 +99,52 @@ func level_up ():
 
 
 func take_damage (dmgToTake):
+	
 	curHp -= dmgToTake
+	
 	if curHp <= 0:
+		
 		ui.update_health_bar(curHp, maxHp)
 		AutoLoad.not_game_scene()
 		die()
 
 
 func die ():
+	
 	queue_free()
 	get_tree().change_scene("res://src/UI/QuitTheLevel/YouDiedScreen.tscn")
 
 
 func _process (delta):
+	
 	if Input.is_action_just_pressed("interact"):
+		
 		try_interact()
+		
 	if Input.is_action_pressed("shoot"):
+		
 		shoot()
+		
 	$FirePoint.look_at(get_global_mouse_position())
 
 
 func get_time():
+	
 	return OS.get_ticks_msec() / 1000
 
 
 func try_interact ():
+	
 	rayCast.cast_to = facingDir * interactDist
+	
 	if rayCast.is_colliding():
+		
 		if rayCast.get_collider() is KinematicBody2D:
+			
 			rayCast.get_collider().take_damage(damage)
+			
 		elif rayCast.get_collider().has_method("on_interact"):
+			
 			rayCast.get_collider().on_interact(self)
 
 
