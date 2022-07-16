@@ -1,20 +1,20 @@
 extends Node2D
 
-var FirstRandom = RandomNumberGenerator.new()
-var SecondRandom = RandomNumberGenerator.new()
-var ThirdRandom = RandomNumberGenerator.new()
+var AbilitiesRandom = RandomNumberGenerator.new()
+var GunRandom = RandomNumberGenerator.new()
+var EnemiesRandom = RandomNumberGenerator.new()
 
 
 func _ready():
-	FirstRandom.randomize()
-	SecondRandom.randomize()
-	ThirdRandom.randomize()
+	AbilitiesRandom.randomize()
+	GunRandom.randomize()
+	EnemiesRandom.randomize()
 
 
 func roll_the_dices():
-	FirstRandom = FirstRandom.randi_range(1, 6)
-	SecondRandom = SecondRandom.randi_range(1, 6)
-	ThirdRandom = ThirdRandom.randi_range(1, 6)
-	print(FirstRandom)
-	print(SecondRandom)
-	print(ThirdRandom)
+	AbilitiesRandom = AbilitiesRandom.randi_range(1, 6)
+	GunRandom = GunRandom.randi_range(1, 6)
+	EnemiesRandom = EnemiesRandom.randi_range(1, 6)
+	print(AbilitiesRandom)
+	print(GunRandom)
+	print(EnemiesRandom)

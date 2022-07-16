@@ -24,7 +24,6 @@ margin_left = -124.976
 margin_top = -80.0
 margin_right = 125.024
 margin_bottom = -20.0
-texture = ExtResource( 2 )
 expand = true
 
 [node name="LevelBackground" type="TextureRect" parent="Background"]

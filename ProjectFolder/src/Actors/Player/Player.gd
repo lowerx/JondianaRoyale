@@ -48,8 +48,6 @@ func _physics_process (delta):
 	
 	ui.update_gold_text(gold)
 
-	ui.update_xp_bar(curXp, xpToNextLevel)
-
 	ui.update_level_text(curLevel)
 
 	ui.update_xp_bar(curXp, xpToNextLevel)
@@ -77,11 +75,14 @@ func level_up ():
 func take_damage (dmgToTake):
 	curHp -= dmgToTake
 	if curHp <= 0:
+		ui.update_health_bar(curHp, maxHp)
 		die()
 
 
 func die ():
-	get_tree().reload_current_scene()
+	queue_free()
+	get_tree().paused = true
+	get_tree().change_scene("res://src/UI/QuitTheLevel/YouDiedScreen.tscn")
 
 
 func _process (delta):
