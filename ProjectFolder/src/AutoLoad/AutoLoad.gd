@@ -2,8 +2,12 @@ extends Node
 
 signal update
 
+export var time = 0.00
+
 var start = true
 var _game_scene = false
+var bushes = 0.00
+var tree = 0.00
 
 
 func _ready():
