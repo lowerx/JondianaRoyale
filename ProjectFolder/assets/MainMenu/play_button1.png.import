@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Logo-game.png-19d4792b16a45afc09c931d1d276a2b7.stex"
+path="res://.import/play_button1.png-3b3cb1b6d3a1759eb067478ea0ca5890.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Main Menu/Logo-game.png"
-dest_files=[ "res://.import/Logo-game.png-19d4792b16a45afc09c931d1d276a2b7.stex" ]
+source_file="res://assets/MainMenu/play_button1.png"
+dest_files=[ "res://.import/play_button1.png-3b3cb1b6d3a1759eb067478ea0ca5890.stex" ]
 
 [params]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://src/Objects/Bullet.gd" type="Script" id=1]
 [ext_resource path="res://assets/objects/bullet.png" type="Texture" id=2]
@@ -6,9 +6,6 @@
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 8.14326
 height = 27.6259
-
-[sub_resource type="CircleShape2D" id=2]
-radius = 7.86989
 
 [node name="Bullet" type="Area2D"]
 rotation = 3.14159
@@ -21,21 +18,13 @@ scale = Vector2( 0.110196, 0.106068 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -1.41422, 7.15256e-06 )
-rotation = -1.57332
+rotation = -1.5708
+scale = Vector2( 2, 2 )
 shape = SubResource( 1 )
 
 [node name="KillTimer" type="Timer" parent="." groups=["bullet"]]
 one_shot = true
 
-[node name="BulletArea" type="Area2D" parent="." groups=["bullets"]]
-collision_layer = 8
-collision_mask = 6
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BulletArea"]
-position = Vector2( -53.8688, -44.7441 )
-shape = SubResource( 2 )
-
+[connection signal="area_entered" from="." to="." method="_on_Bullet_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_Bullet_body_entered"]
 [connection signal="timeout" from="KillTimer" to="." method="_on_KillTimer_timeout"]
-[connection signal="area_entered" from="BulletArea" to="." method="_on_BulletArea_area_entered"]
-[connection signal="body_entered" from="BulletArea" to="." method="_on_BulletArea_body_entered"]
