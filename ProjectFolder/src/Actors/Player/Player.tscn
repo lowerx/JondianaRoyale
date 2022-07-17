@@ -23,8 +23,8 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 5 ), ExtResource( 7 ) ],
 "loop": false,
-"name": "death",
-"speed": 1.5
+"name": "dead",
+"speed": 1.0
 } ]
 
 [sub_resource type="CapsuleShape2D" id=2]
@@ -44,8 +44,6 @@ script = ExtResource( 2 )
 rotation = 4.71239
 frames = SubResource( 1 )
 animation = "stay"
-frame = 1
-playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -2.27374e-13 )
@@ -65,11 +63,6 @@ scale = Vector2( 5, 5 )
 current = true
 script = ExtResource( 3 )
 
-[node name="FirePoint" type="Node2D" parent="."]
-position = Vector2( 0, -100 )
-
-[node name="EndOfGun" type="Position2D" parent="FirePoint"]
-
 [node name="Area2D" type="Area2D" parent="." groups=["player"]]
 position = Vector2( -9.09495e-13, -307.106 )
 rotation = -3.55271e-15
@@ -80,6 +73,13 @@ position = Vector2( -53.8688, -44.7441 )
 shape = SubResource( 3 )
 
 [node name="DeathTimer" type="Timer" parent="."]
+
+[node name="FirePoint" type="Node2D" parent="."]
+position = Vector2( 0, -100 )
+rotation = -2.27374e-13
+scale = Vector2( 1, 1 )
+
+[node name="EndOfGun" type="Position2D" parent="FirePoint"]
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
 [connection signal="timeout" from="DeathTimer" to="." method="_on_DeathTimer_timeout"]

@@ -57,7 +57,7 @@ func get_the_player(name, enemy_object):
 		stats["attack_rate"] = 1.0
 		stats["attack_distance"] = 20
 		stats["chase_distance"] = 200
-		stats["enemy_scale"] = 1.0 / 10.0
+		stats["enemy_scale"] = 1.0 / 13.0
 		
 	elif name == "mummy":
 		
@@ -97,7 +97,7 @@ func get_the_player(name, enemy_object):
 		stats["attack_rate"] = 1.5
 		stats["attack_distance"] = 50
 		stats["chase_distance"] = 400
-		stats["enemy_scale"] = 1.0 / 8.0
+		stats["enemy_scale"] = 1.0 /10.0
 	
 	elif name == "skeleton":
 		

@@ -79,7 +79,7 @@ func die ():
 
 func _on_Area2D_area_entered(area):
 	
-	if area.get_name() == "Bullet":
+	if area.get_name() == "BulletArea":
 		
 		self.hp -= AutoLoad.gun["damage"]
 

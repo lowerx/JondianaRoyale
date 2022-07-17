@@ -74,6 +74,10 @@ func _physics_process (delta):
 			
 			$PlayerModel.play("run")
 			$PlayerModel.set_flip_h(true)
+			$FirePoint.position.y = 100
+		
+			gun.global_position = end_of_gun.global_position
+			gun.rotate_gun(true)
 			
 			vel.x -= 1
 			facingDir = Vector2(-1, 0)
@@ -82,6 +86,10 @@ func _physics_process (delta):
 			
 			$PlayerModel.play("run")
 			$PlayerModel.set_flip_h(false)
+			$FirePoint.position.y = -100
+		
+			gun.global_position = end_of_gun.global_position
+			gun.rotate_gun(false)
 			
 			vel.x += 1
 			facingDir = Vector2(1, 0)
@@ -137,7 +145,11 @@ func take_damage (dmgToTake):
 
 func die ():
 	
-	$PlayerModel.play("death")
+	self.dead = true
+	
+	$PlayerModel.stop()
+	
+	$PlayerModel.play("dead")
 	
 	DeathTimer.start()
 
