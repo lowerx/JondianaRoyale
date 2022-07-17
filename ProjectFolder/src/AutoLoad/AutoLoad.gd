@@ -19,7 +19,7 @@ var ability = {
 }
 
 var gun = {
-	"name": null,
+	"name": "",
 	"damage": 0.00,
 	"damage_range": 0.00,
 	"fire_rate": 0.00,
@@ -29,6 +29,8 @@ var gun = {
 
 var enemies_numbers = []
 var enemies = []
+
+var boss_dmg = 4
 
 
 func _ready():
@@ -56,7 +58,7 @@ func reset_values():
 	self.enemies_numbers = []
 	self.enemies = []
 	self.gun = {
-		"name": null,
+		"name": "",
 		"damage": 0,
 		"damage_range": 0.00,
 		"fire_rate": 0.00,

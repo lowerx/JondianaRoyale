@@ -6,7 +6,7 @@ var EnemiesRandom = RandomNumberGenerator.new()
 
 onready var ABILITIES_LIST = [
 	"invincibility",
-	"swimming",
+	"walking_dice",
 	"walls",
 	"extra_hp",
 	"dash",
@@ -28,6 +28,7 @@ onready var ENEMIES_LIST = [
 	"witch",
 	"skeleton"
 ]
+onready var Dices = $Dices
 
 
 func _ready():
@@ -35,6 +36,10 @@ func _ready():
 	AbilitiesRandom.randomize()
 	GunRandom.randomize()
 	EnemiesRandom.randomize()
+	
+	print("READY")
+	
+	roll_the_dices()
 
 
 func roll_the_dices():
@@ -42,6 +47,8 @@ func roll_the_dices():
 	AbilitiesRandom = AbilitiesRandom.randi_range(1, 6)
 	GunRandom = GunRandom.randi_range(1, 6)
 	EnemiesRandom = EnemiesRandom.randi_range(1, 6)
+	
+	Dices.getting_initial(AbilitiesRandom - 1, GunRandom - 1, EnemiesRandom - 1, (AbilitiesRandom + GunRandom + EnemiesRandom) / 3)
 	
 	if ABILITIES_LIST[AbilitiesRandom - 1] != null:
 			
@@ -63,7 +70,7 @@ func roll_the_dices():
 			else:
 				
 				AutoLoad.enemies_numbers.append({ "name": ENEMIES_LIST[enemy], "amount": round(AutoLoad.level * 6 / 100) })
-				
+			
 	print(AbilitiesRandom)
 	print(GunRandom)
 	print(EnemiesRandom)

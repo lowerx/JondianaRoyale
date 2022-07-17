@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="Project Folder"
-run/main_scene="res://src/UI/MainMenu/MainScreen.tscn"
+run/main_scene="res://src/Scenes/RollingTheDice/RollingTheDice.tscn"
 config/icon="res://icon.png"
 
 [autoload]
@@ -21,6 +21,7 @@ AutoLoad="*res://src/AutoLoad/AutoLoad.gd"
 [global]
 
 size=false
+coll=false
 
 [input]
 
@@ -63,6 +64,28 @@ interact={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
+next={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777221,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+
+[layer_names]
+
+2d_render/layer_1="player"
+2d_render/layer_2="enemy"
+2d_render/layer_3="boss"
+2d_render/layer_4="player_bullet"
+2d_render/layer_5="boss_bullet"
+2d_render/layer_6="chest"
+2d_render/layer_7="wall"
+2d_physics/layer_1="player"
+2d_physics/layer_2="enemy"
+2d_physics/layer_3="boss"
+2d_physics/layer_4="player_bullet"
+2d_physics/layer_5="boss_bullet"
+2d_physics/layer_6="chest"
 
 [physics]
 

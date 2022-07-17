@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
-var curHp : int = 10
-export var maxHp : int = 10
+var curHp : int = 100
+export var maxHp : int = 100
 export var moveSpeed : int = 250
 var fire_time = 0.0
 
@@ -42,6 +42,7 @@ func get_gun():
 	
 	gun = gun_path.instance()
 	add_child(gun)
+	gun.set_name(AutoLoad.gun["name"])
 	gun.global_position = end_of_gun.global_position
 
 
@@ -51,26 +52,38 @@ func _physics_process (delta):
   
 	if Input.is_action_pressed("up"):
 		
+		$PlayerModel.play("run")
+		
 		vel.y -= 1
 		facingDir = Vector2(0, -1)
 		
 	if Input.is_action_pressed("down"):
+		
+		$PlayerModel.play("run")
 		
 		vel.y += 1
 		facingDir = Vector2(0, 1)
 		
 	if Input.is_action_pressed("left"):
 		
+		$PlayerModel.play("run")
+		$PlayerModel.set_flip_h(true)
+		
 		vel.x -= 1
 		facingDir = Vector2(-1, 0)
 		
 	if Input.is_action_pressed("right"):
+		
+		$PlayerModel.play("run")
+		$PlayerModel.set_flip_h(false)
 		
 		vel.x += 1
 		facingDir = Vector2(1, 0)
 	
   
 	vel = vel.normalized()
+	
+	$PlayerModel.play("run")
   
 	move_and_slide(vel * moveSpeed, Vector2.ZERO)
 	
@@ -118,6 +131,8 @@ func take_damage (dmgToTake):
 
 func die ():
 	
+	$PlayerModel.play("death")
+	
 	queue_free()
 	get_tree().change_scene("res://src/UI/QuitTheLevel/YouDiedScreen.tscn")
 
@@ -131,6 +146,8 @@ func _process (delta):
 	if Input.is_action_pressed("shoot"):
 		
 		print("FUST: ", AutoLoad.gun)
+		
+		self.gun.fire()
 		
 		if AutoLoad.gun["shotability"]:
 		
@@ -149,6 +166,8 @@ func get_time():
 
 
 func try_interact ():
+	
+	$PlayerModel.play("stay")
 	
 	rayCast.cast_to = facingDir * interactDist
 	
@@ -184,3 +203,10 @@ func beat():
 	var explosion = explosion_path.instance()
 	var direction = (get_global_mouse_position() - end_of_gun.global_position).normalized()
 	emit_signal("player_fired_explosion", explosion, end_of_gun.global_position, direction)
+
+
+func _on_Area2D_area_entered(area):
+	if curHp > 0:
+		curHp -= AutoLoad.boss_dmg
+	else:
+		die()
