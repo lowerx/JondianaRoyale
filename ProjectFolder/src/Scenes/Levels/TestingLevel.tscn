@@ -264,6 +264,7 @@ margin_bottom = 600.0
 texture = ExtResource( 4 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 40, 144 )
 
 [node name="Bullet_manager" parent="." instance=ExtResource( 3 )]
 

@@ -8,6 +8,7 @@ onready var kill_timer = $KillTimer
 var direction = Vector2.ZERO
 var damage = 0
 
+
 func _ready() -> void:
 	kill_timer.start(AutoLoad.gun["bullet_timer"])
 

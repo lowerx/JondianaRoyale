@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-var curHp : int = 100
+var hp = 100
 export var maxHp : int = 100
 export var moveSpeed : int = 250
 var fire_time = 0.0
@@ -35,7 +35,7 @@ onready var DeathTimer = $DeathTimer
 func _ready ():
 	
 	ui.update_level_text(curLevel)
-	ui.update_health_bar(curHp, maxHp)
+	ui.update_health_bar(self.hp, maxHp)
 	ui.update_xp_bar(curXp, xpToNextLevel)
 	ui.update_gold_text(gold)
 	
@@ -107,7 +107,7 @@ func _physics_process (delta):
 
 		ui.update_xp_bar(curXp, xpToNextLevel)
 
-		ui.update_health_bar(curHp, maxHp)
+		ui.update_health_bar(self.hp, maxHp)
 
 
 func give_gold (amount):
@@ -134,12 +134,12 @@ func level_up ():
 
 func take_damage (dmgToTake):
 	
-	curHp -= dmgToTake
+	self.hp -= dmgToTake
 	
-	if curHp <= 0:
+	if self.hp <= 0:
 		
 		die()
-		ui.update_health_bar(curHp, maxHp)
+		ui.update_health_bar(self.hp, maxHp)
 		AutoLoad.not_game_scene()
 
 
@@ -226,9 +226,9 @@ func beat():
 
 func _on_Area2D_area_entered(area):
 	
-	if curHp > 0:
+	if self.hp > 0:
 		
-		curHp -= AutoLoad.boss_dmg
+		self.hp -= AutoLoad.boss_dmg
 		
 	else:
 		

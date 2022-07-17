@@ -34,11 +34,7 @@ func _process(delta):
 		
 		if not AutoLoad._game_scene:
 		
-			self.death_animation = true
-			
-			$AnimatedEnemy.play(enemy_name + "_death")
-			
-			DeathTimer.start()
+			queue_free()
 			
 		if self.hp <= 0:
 			

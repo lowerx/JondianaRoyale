@@ -39,11 +39,6 @@ animations = [ {
 "name": "bow_fire",
 "speed": 3.0
 }, {
-"frames": [ ExtResource( 23 ), ExtResource( 6 ), ExtResource( 25 ) ],
-"loop": false,
-"name": "autorifle_fire",
-"speed": 2.0
-}, {
 "frames": [ ExtResource( 12 ), ExtResource( 17 ), ExtResource( 19 ) ],
 "loop": false,
 "name": "shotgun_fire",
@@ -63,6 +58,11 @@ animations = [ {
 "loop": false,
 "name": "sward_fire",
 "speed": 3.0
+}, {
+"frames": [ ExtResource( 23 ), ExtResource( 6 ), ExtResource( 25 ) ],
+"loop": false,
+"name": "rifle_fire",
+"speed": 2.0
 } ]
 
 [node name="Gun" type="Node2D"]
@@ -70,5 +70,4 @@ script = ExtResource( 1 )
 
 [node name="AnimatedGun" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
-animation = "sward_fire"
-frame = 2
+animation = "rifle_fire"
