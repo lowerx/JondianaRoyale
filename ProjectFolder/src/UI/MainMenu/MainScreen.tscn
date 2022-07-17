@@ -28,7 +28,7 @@ margin_bottom = 489.0
 [node name="PlayButton" parent="VBoxContainer" instance=ExtResource( 2 )]
 margin_right = 342.0
 margin_bottom = 176.0
-next_scene_path = "res://src/Scenes/Levels/TestingLevel.tscn"
+next_scene_path = "res://src/Scenes/RollingTheDice/RollingTheDice.tscn"
 
 [node name="QuitButton" parent="VBoxContainer" instance=ExtResource( 1 )]
 margin_top = 180.0

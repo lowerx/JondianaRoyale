@@ -4,11 +4,13 @@ var timing = 0
 var final_ability = 0
 var final_gun = 0
 var final_enemies = 0
+var raw = "ability"
 
 
 onready var AbilityTimer = $AbilityTimer
 onready var GunTimer = $GunTimer
 onready var EnemiesTimer = $EnemiesTimer
+export(String, FILE) var next_scene_path: = ""
 
 
 func getting_initial(ability, gun, enemies, timing):
@@ -21,9 +23,21 @@ func getting_initial(ability, gun, enemies, timing):
 
 func _process(delta):
 	
-	if Input.is_action_just_released("next"):
+	if Input.is_action_just_released("next") and self.raw == "ability":
 		
 		roll_the_ability()
+	
+	elif Input.is_action_just_released("next") and self.raw == "gun":
+		
+		roll_the_gun()
+	
+	elif Input.is_action_just_released("next") and self.raw == "enemies":
+		
+		roll_the_enemies()
+	
+	elif Input.is_action_just_released("next") and self.raw == "play":
+		
+		get_tree().change_scene(next_scene_path)
 
 
 func roll_the_ability():
@@ -37,9 +51,7 @@ func _on_AbilityTimer_timeout():
 	$AbilityDice.stop()
 	$AbilityDice.set_frame(self.final_ability)
 	
-	if Input.is_action_just_released("next"):
-		
-		roll_the_gun()
+	self.raw = "gun"
 
 
 func roll_the_gun():
@@ -53,9 +65,7 @@ func _on_GunTimer_timeout():
 	$GunDice.stop()
 	$GunDice.set_frame(self.final_gun)
 	
-	if Input.is_action_just_released("next"):
-		
-		roll_the_enemies()
+	self.raw = "enemies"
 
 
 func roll_the_enemies():
@@ -68,3 +78,5 @@ func _on_EnemiesTimer_timeout():
 	
 	$EnemiesDice.stop()
 	$EnemiesDice.set_frame(self.final_enemies)
+	
+	self.raw = "play"
