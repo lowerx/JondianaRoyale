@@ -72,4 +72,3 @@ script = ExtResource( 1 )
 frames = SubResource( 1 )
 animation = "sward_fire"
 frame = 2
-playing = true

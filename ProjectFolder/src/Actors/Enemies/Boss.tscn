@@ -10,7 +10,7 @@ height = 176.065
 [sub_resource type="CircleShape2D" id=2]
 radius = 794.403
 
-[node name="Boss" type="KinematicBody2D"]
+[node name="Boss" type="KinematicBody2D" groups=["boss"]]
 collision_layer = 4
 collision_mask = 11
 script = ExtResource( 2 )
@@ -22,7 +22,7 @@ texture = ExtResource( 1 )
 light_mask = 4
 shape = SubResource( 1 )
 
-[node name="kill_boss_zone" type="Area2D" parent="."]
+[node name="kill_boss_zone" type="Area2D" parent="." groups=["boss"]]
 collision_layer = 4
 collision_mask = 8
 
@@ -33,7 +33,7 @@ shape = SubResource( 1 )
 [node name="ShootTimer" type="Timer" parent="."]
 autostart = true
 
-[node name="agression_zone" type="Area2D" parent="." groups=["agression"]]
+[node name="agression_zone" type="Area2D" parent="." groups=["agression", "boss"]]
 collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="agression_zone"]

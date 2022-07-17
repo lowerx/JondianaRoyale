@@ -12,7 +12,6 @@ var projectResolution = Vector2(800, 800)
 
 
 func _ready():
-	
 	player.connect("player_fired_bullet", bullet_manager, "handle_bullet_spawned")
 	player.connect("player_fired_explosion", bullet_manager, "handle_explosion_spawned")
 	
@@ -20,17 +19,26 @@ func _ready():
 	
 	for enemy in AutoLoad.enemies_numbers:
 		
+		var enemy_object = enemy_path.instance()
+			
+		enemy_object.enemy_name = enemy["name"]
+		
+		var stats = get_the_player(enemy["name"], enemy_object)
+		
 		for number in range(0, enemy["amount"]):
 			
-			var enemy_object = enemy_path.instance()
+			var enemy_position = null
 			
-			enemy_object.enemy_name = enemy["name"]
-			
-			var stats = get_the_player(enemy["name"], enemy_object)
-			
-			var random_position = RandomNumberGenerator.new()
-			random_position.randomize()
-			var enemy_position = Vector2(random_position.randi_range(0, projectResolution.x), random_position.randi_range(0, projectResolution.y))
+			while true:
+				
+				var random_position = RandomNumberGenerator.new()
+				random_position.randomize()
+				enemy_position = Vector2(random_position.randi_range(0, projectResolution.x), random_position.randi_range(0, projectResolution.y))
+				var distance_to_player = enemy_position.distance_to(player.position)
+				
+				if distance_to_player >= 500:
+					
+					break
 			
 			get_tree().get_root().add_child(enemy_object)
 			enemy_object.global_position = enemy_position
@@ -41,7 +49,7 @@ func _ready():
 			enemy_object.attackDist = stats["attack_distance"]
 			enemy_object.chaseDist = stats["chase_distance"]
 			enemy_object.scale = Vector2(stats["enemy_scale"], stats["enemy_scale"])
-			
+		
 			AutoLoad.enemies.append(enemy_object)
 
 
@@ -57,7 +65,7 @@ func get_the_player(name, enemy_object):
 		stats["attack_rate"] = 1.0
 		stats["attack_distance"] = 20
 		stats["chase_distance"] = 200
-		stats["enemy_scale"] = 1.0 / 13.0
+		stats["enemy_scale"] = 1.0 / 10.0
 		
 	elif name == "mummy":
 		
@@ -97,7 +105,7 @@ func get_the_player(name, enemy_object):
 		stats["attack_rate"] = 1.5
 		stats["attack_distance"] = 50
 		stats["chase_distance"] = 400
-		stats["enemy_scale"] = 1.0 /10.0
+		stats["enemy_scale"] = 1.0 / 8.0
 	
 	elif name == "skeleton":
 		
