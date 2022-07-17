@@ -13,8 +13,11 @@ var xpToGive : int = 30
 
 var enemy_name = ""
 
+var death_animation : bool = false
+
 onready var target = get_node("/root/TestingLevel/Player")
 onready var timer = $Timer
+onready var DeathTimer = $DeathTimer
 
 
 func _ready ():
@@ -25,27 +28,35 @@ func _ready ():
 
 func _process(delta):
 	
-	$AnimatedEnemy.play(enemy_name + "_stay")
-	
-	if not AutoLoad._game_scene:
+	if not self.death_animation:
 		
-		queue_free()
+		$AnimatedEnemy.play(enemy_name + "_stay")
 		
-	if self.hp <= 0:
+		if not AutoLoad._game_scene:
 		
-		die()
+			self.death_animation = true
+			
+			$AnimatedEnemy.play(enemy_name + "_death")
+			
+			DeathTimer.start()
+			
+		if self.hp <= 0:
+			
+			die()
 
 
 func _physics_process (delta):
 	
-	$AnimatedEnemy.play(self.enemy_name + "_run")
+	if not self.death_animation:
 	
-	var dist = position.distance_to(target.position)
-	
-	if dist > attackDist and dist < chaseDist:
+		$AnimatedEnemy.play(self.enemy_name + "_run")
 		
-		var vel = (target.position - position).normalized()
-		move_and_slide(vel * speed)
+		var dist = position.distance_to(target.position)
+		
+		if dist > attackDist and dist < chaseDist:
+			
+			var vel = (target.position - position).normalized()
+			move_and_slide(vel * speed)
 
 
 func _on_Timer_timeout():
@@ -57,11 +68,13 @@ func _on_Timer_timeout():
 
 func die ():
 	
+	self.death_animation = true
+	
 	target.give_xp(xpToGive)
 	
 	$AnimatedEnemy.play(enemy_name + "_death")
 	
-	queue_free()
+	DeathTimer.start()
 
 
 func _on_Area2D_area_entered(area):
@@ -69,3 +82,8 @@ func _on_Area2D_area_entered(area):
 	if area.get_name() == "Bullet":
 		
 		self.hp -= AutoLoad.gun["damage"]
+
+
+func _on_DeathTimer_timeout():
+	
+	queue_free()

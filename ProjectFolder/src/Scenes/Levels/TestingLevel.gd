@@ -12,6 +12,7 @@ var projectResolution = Vector2(800, 800)
 
 
 func _ready():
+	
 	player.connect("player_fired_bullet", bullet_manager, "handle_bullet_spawned")
 	player.connect("player_fired_explosion", bullet_manager, "handle_explosion_spawned")
 	
@@ -19,13 +20,13 @@ func _ready():
 	
 	for enemy in AutoLoad.enemies_numbers:
 		
-		var enemy_object = enemy_path.instance()
-			
-		enemy_object.enemy_name = enemy["name"]
-		
-		var stats = get_the_player(enemy["name"], enemy_object)
-		
 		for number in range(0, enemy["amount"]):
+			
+			var enemy_object = enemy_path.instance()
+			
+			enemy_object.enemy_name = enemy["name"]
+			
+			var stats = get_the_player(enemy["name"], enemy_object)
 			
 			var random_position = RandomNumberGenerator.new()
 			random_position.randomize()

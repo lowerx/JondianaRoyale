@@ -6,10 +6,12 @@ var gun_name = ""
 func set_name(name):
 	
 	self.gun_name = name
-	$AnimatedGun.play(self.gun_name + "_static")
+	$AnimatedGun.rotation_degrees = 270
+	$AnimatedGun.set_frame(0)
 
 
 func fire():
 	
 	$AnimatedGun.play(self.gun_name + "_fire")
+	
 

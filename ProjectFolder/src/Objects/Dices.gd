@@ -26,13 +26,7 @@ func _process(delta):
 	if Input.is_action_just_released("next") and self.raw == "ability":
 		
 		roll_the_ability()
-	
-	elif Input.is_action_just_released("next") and self.raw == "gun":
-		
 		roll_the_gun()
-	
-	elif Input.is_action_just_released("next") and self.raw == "enemies":
-		
 		roll_the_enemies()
 	
 	elif Input.is_action_just_released("next") and self.raw == "play":

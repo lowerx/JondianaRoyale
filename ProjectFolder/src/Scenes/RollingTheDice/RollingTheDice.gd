@@ -37,8 +37,6 @@ func _ready():
 	GunRandom.randomize()
 	EnemiesRandom.randomize()
 	
-	print("READY")
-	
 	roll_the_dices()
 
 
@@ -84,7 +82,7 @@ func create_gun(name):
 	
 	elif name == 'shotgun':
 		
-		_complete_gun(50.0, 5.0, 2.0, true, 0.5)
+		_complete_gun(50.0, 5.0, 2.0, true, 0.2)
 		
 	elif name == 'fists':
 		

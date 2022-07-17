@@ -19,7 +19,7 @@ script = ExtResource( 2 )
 texture = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -5.3454 )
+light_mask = 4
 shape = SubResource( 1 )
 
 [node name="kill_boss_zone" type="Area2D" parent="."]
@@ -33,7 +33,7 @@ shape = SubResource( 1 )
 [node name="ShootTimer" type="Timer" parent="."]
 autostart = true
 
-[node name="agression_zone" type="Area2D" parent="."]
+[node name="agression_zone" type="Area2D" parent="." groups=["agression"]]
 collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="agression_zone"]

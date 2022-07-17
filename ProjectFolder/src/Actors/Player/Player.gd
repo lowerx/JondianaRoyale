@@ -16,6 +16,8 @@ var facingDir = Vector2()
 
 var gun = null
 
+var dead : bool = false
+
 signal player_fired_bullet(bullet, position, direction)
 signal player_fired_explosion(explosion, position, direction)
 
@@ -26,6 +28,8 @@ onready var bullet_path = preload("res://src/Objects/Bullet.tscn")
 onready var explosion_path = preload("res://src/Objects/Explosion.tscn")
 onready var end_of_gun = $FirePoint/EndOfGun
 onready var gun_path = preload("res://src/Objects/Gun/Gun.tscn")
+
+onready var DeathTimer = $DeathTimer
 
 
 func _ready ():
@@ -47,53 +51,55 @@ func get_gun():
 
 
 func _physics_process (delta):
+	
+	if not self.dead:
   
-	vel = Vector2()
-  
-	if Input.is_action_pressed("up"):
-		
-		$PlayerModel.play("run")
-		
-		vel.y -= 1
-		facingDir = Vector2(0, -1)
-		
-	if Input.is_action_pressed("down"):
-		
-		$PlayerModel.play("run")
-		
-		vel.y += 1
-		facingDir = Vector2(0, 1)
-		
-	if Input.is_action_pressed("left"):
-		
-		$PlayerModel.play("run")
-		$PlayerModel.set_flip_h(true)
-		
-		vel.x -= 1
-		facingDir = Vector2(-1, 0)
-		
-	if Input.is_action_pressed("right"):
-		
-		$PlayerModel.play("run")
-		$PlayerModel.set_flip_h(false)
-		
-		vel.x += 1
-		facingDir = Vector2(1, 0)
+		vel = Vector2()
+	  
+		if Input.is_action_pressed("up"):
+			
+			$PlayerModel.play("run")
+			
+			vel.y -= 1
+			facingDir = Vector2(0, -1)
+			
+		if Input.is_action_pressed("down"):
+			
+			$PlayerModel.play("run")
+			
+			vel.y += 1
+			facingDir = Vector2(0, 1)
+			
+		if Input.is_action_pressed("left"):
+			
+			$PlayerModel.play("run")
+			$PlayerModel.set_flip_h(true)
+			
+			vel.x -= 1
+			facingDir = Vector2(-1, 0)
+			
+		if Input.is_action_pressed("right"):
+			
+			$PlayerModel.play("run")
+			$PlayerModel.set_flip_h(false)
+			
+			vel.x += 1
+			facingDir = Vector2(1, 0)
 	
   
-	vel = vel.normalized()
-	
-	$PlayerModel.play("run")
-  
-	move_and_slide(vel * moveSpeed, Vector2.ZERO)
-	
-	ui.update_gold_text(gold)
+		vel = vel.normalized()
+		
+		$PlayerModel.play("run")
+	  
+		move_and_slide(vel * moveSpeed, Vector2.ZERO)
+		
+		ui.update_gold_text(gold)
 
-	ui.update_level_text(curLevel)
+		ui.update_level_text(curLevel)
 
-	ui.update_xp_bar(curXp, xpToNextLevel)
+		ui.update_xp_bar(curXp, xpToNextLevel)
 
-	ui.update_health_bar(curHp, maxHp)
+		ui.update_health_bar(curHp, maxHp)
 
 
 func give_gold (amount):
@@ -124,40 +130,41 @@ func take_damage (dmgToTake):
 	
 	if curHp <= 0:
 		
+		die()
 		ui.update_health_bar(curHp, maxHp)
 		AutoLoad.not_game_scene()
-		die()
 
 
 func die ():
 	
 	$PlayerModel.play("death")
 	
-	queue_free()
-	get_tree().change_scene("res://src/UI/QuitTheLevel/YouDiedScreen.tscn")
+	DeathTimer.start()
 
 
 func _process (delta):
 	
-	if Input.is_action_just_pressed("interact"):
-		
-		try_interact()
-		
-	if Input.is_action_pressed("shoot"):
-		
-		print("FUST: ", AutoLoad.gun)
-		
-		self.gun.fire()
-		
-		if AutoLoad.gun["shotability"]:
-		
-			shoot()
-		
-		else:
+	if not self.dead:
+	
+		if Input.is_action_just_pressed("interact"):
 			
-			beat()
-		
-	$FirePoint.look_at(get_global_mouse_position())
+			try_interact()
+			
+		if Input.is_action_pressed("shoot"):
+			
+			print("FUST: ", AutoLoad.gun)
+			
+			self.gun.fire()
+			
+			if AutoLoad.gun["shotability"]:
+			
+				shoot()
+			
+			else:
+				
+				beat()
+			
+		$FirePoint.look_at(get_global_mouse_position())
 
 
 func get_time():
@@ -206,7 +213,18 @@ func beat():
 
 
 func _on_Area2D_area_entered(area):
+	
 	if curHp > 0:
+		
 		curHp -= AutoLoad.boss_dmg
+		
 	else:
+		
 		die()
+
+
+func _on_DeathTimer_timeout():
+	
+	queue_free()
+	
+	get_tree().change_scene("res://src/UI/QuitTheLevel/YouDiedScreen.tscn")
