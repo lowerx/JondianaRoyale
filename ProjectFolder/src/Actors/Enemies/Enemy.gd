@@ -15,7 +15,7 @@ var enemy_name = ""
 
 var death_animation : bool = false
 
-onready var target = get_node("/root/TestingLevel/Player")
+onready var target = get_node("/root/TheLastFight/Player")
 onready var timer = $Timer
 onready var DeathTimer = $DeathTimer
 

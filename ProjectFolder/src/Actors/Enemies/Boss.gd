@@ -14,7 +14,7 @@ var chaseDist : int = 800
 
 var dead : bool = false
 
-onready var target = get_node("/root/TestingLevel/Player")
+onready var target = get_node("/root/TheLastFight/Player")
 onready var ShootTimer = $ShootTimer
 onready var DeathTimer = $DeathTimer
 

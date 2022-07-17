@@ -62,7 +62,7 @@ animations = [ {
 
 [node name="Dices" type="Node2D"]
 script = ExtResource( 2 )
-next_scene_path = "res://src/Scenes/Levels/TestingLevel.tscn"
+next_scene_path = "res://src/Scenes/Levels/TheLastFight.tscn"
 
 [node name="AbilityDice" type="AnimatedSprite" parent="."]
 position = Vector2( 150, 250 )
