@@ -33,8 +33,11 @@ func _physics_process (delta):
 	move = Vector2.ZERO
 	
 	if player != null:
+		
 		move = position.direction_to(player.position) * moveSpeed
+	
 	else:
+		
 		move = Vector2.ZERO
 	
 	move = move.normalized()
@@ -60,12 +63,3 @@ func _on_Area2D_area_entered(area: Area2D) -> void:
 func _on_ShootTimer_timeout() -> void:
 	if player != null:
 		shoot()
-
-
-func _on_agression_zone_body_entered(body: Node) -> void:
-	if body != self:
-		player = body
-
-
-func _on_agression_zone_body_exited(body: Node) -> void:
-	player = null
