@@ -1,0 +1,73 @@
+[gd_scene load_steps=28 format=2]
+
+[ext_resource path="res://src/Objects/Gun/Gun.gd" type="Script" id=1]
+[ext_resource path="res://assets/actors/MainHero/weapons/bow/bowanim/2.png" type="Texture" id=2]
+[ext_resource path="res://assets/actors/MainHero/weapons/bow/bowanim/4.png" type="Texture" id=3]
+[ext_resource path="res://assets/actors/MainHero/weapons/bow/bowanim/3.png" type="Texture" id=4]
+[ext_resource path="res://assets/actors/MainHero/weapons/fists/anim/2.png" type="Texture" id=5]
+[ext_resource path="res://assets/actors/MainHero/weapons/autoriffle/fireanim/2.png" type="Texture" id=6]
+[ext_resource path="res://assets/actors/MainHero/weapons/pistol/pistol.png" type="Texture" id=7]
+[ext_resource path="res://assets/actors/MainHero/weapons/sniperrifle/sniperrifle.png" type="Texture" id=8]
+[ext_resource path="res://assets/actors/MainHero/weapons/knife/knife.png" type="Texture" id=9]
+[ext_resource path="res://assets/actors/MainHero/weapons/sniperrifle/fireanim/2.png" type="Texture" id=10]
+[ext_resource path="res://assets/actors/MainHero/weapons/pistol/fireanim/1.png" type="Texture" id=11]
+[ext_resource path="res://assets/actors/MainHero/weapons/shotgun/fireanim/1.png" type="Texture" id=12]
+[ext_resource path="res://assets/actors/MainHero/weapons/pistol/fireanim/2.png" type="Texture" id=13]
+[ext_resource path="res://assets/actors/MainHero/weapons/knife/anim/1.png" type="Texture" id=14]
+[ext_resource path="res://assets/actors/MainHero/weapons/fists/anim/3.png" type="Texture" id=15]
+[ext_resource path="res://assets/actors/MainHero/weapons/fists/fists.png" type="Texture" id=16]
+[ext_resource path="res://assets/actors/MainHero/weapons/shotgun/fireanim/2.png" type="Texture" id=17]
+[ext_resource path="res://assets/actors/MainHero/weapons/sniperrifle/fireanim/1.png" type="Texture" id=18]
+[ext_resource path="res://assets/actors/MainHero/weapons/shotgun/shotgun.png" type="Texture" id=19]
+[ext_resource path="res://assets/actors/MainHero/weapons/sniperrifle/fireanim/3.png" type="Texture" id=20]
+[ext_resource path="res://assets/actors/MainHero/weapons/bow/bowanim/1.png" type="Texture" id=21]
+[ext_resource path="res://assets/actors/MainHero/weapons/bow/bow.png" type="Texture" id=22]
+[ext_resource path="res://assets/actors/MainHero/weapons/autoriffle/fireanim/1.png" type="Texture" id=23]
+[ext_resource path="res://assets/actors/MainHero/weapons/fists/anim/1.png" type="Texture" id=24]
+[ext_resource path="res://assets/actors/MainHero/weapons/autoriffle/autoriffle.png" type="Texture" id=25]
+[ext_resource path="res://assets/actors/MainHero/weapons/knife/anim/2.png" type="Texture" id=26]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 24 ), ExtResource( 5 ), ExtResource( 15 ), ExtResource( 16 ) ],
+"loop": true,
+"name": "fists_fire",
+"speed": 3.5
+}, {
+"frames": [ ExtResource( 21 ), ExtResource( 2 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 22 ) ],
+"loop": true,
+"name": "bow_fire",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 12 ), ExtResource( 17 ), ExtResource( 19 ) ],
+"loop": false,
+"name": "shotgun_fire",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 18 ), ExtResource( 10 ), ExtResource( 20 ), ExtResource( 8 ) ],
+"loop": false,
+"name": "sniper_fire",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 11 ), ExtResource( 13 ), ExtResource( 7 ) ],
+"loop": false,
+"name": "pistol_fire",
+"speed": 2.0
+}, {
+"frames": [ ExtResource( 14 ), ExtResource( 26 ), ExtResource( 9 ) ],
+"loop": false,
+"name": "sward_fire",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 23 ), ExtResource( 6 ), ExtResource( 25 ) ],
+"loop": false,
+"name": "rifle_fire",
+"speed": 2.0
+} ]
+
+[node name="Gun" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="AnimatedGun" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "rifle_fire"

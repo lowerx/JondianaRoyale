@@ -7,8 +7,7 @@ onready var player = $Player
 onready var rolling_the_dice = $RollingTheDice
 onready var enemy_path = preload("res://src/Actors/Enemies/Enemy.tscn")
 
-#var projectResolution = OS.get_screen_size()
-var projectResolution = Vector2(800, 800)
+var projectResolution = Vector2(30, 30)
 
 
 func _ready():
@@ -27,19 +26,12 @@ func _ready():
 		
 		for number in range(0, enemy["amount"]):
 			
-			var enemy_position = null
+			var enemy_position = $SpawnPoint.global_position
 			
-			while true:
-				
-				var random_position = RandomNumberGenerator.new()
-				random_position.randomize()
-				enemy_position = Vector2(random_position.randi_range(0, projectResolution.x), random_position.randi_range(0, projectResolution.y))
-				var distance_to_player = enemy_position.distance_to(player.position)
-				
-				if distance_to_player >= 500:
-					
-					break
-			
+			var random_position = RandomNumberGenerator.new()
+			random_position.randomize()
+			enemy_position = Vector2(enemy_position.x + random_position.randi_range(0, projectResolution.x), enemy_position.y + random_position.randi_range(0, projectResolution.y))
+
 			get_tree().get_root().add_child(enemy_object)
 			enemy_object.global_position = enemy_position
 			enemy_object.hp = stats["hp"]

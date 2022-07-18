@@ -25,6 +25,8 @@ func _process(delta):
 	
 	if Input.is_action_just_released("next") and self.raw == "ability":
 		
+		$AudioStreamPlayer2D.play()
+		
 		roll_the_ability()
 		roll_the_gun()
 		roll_the_enemies()

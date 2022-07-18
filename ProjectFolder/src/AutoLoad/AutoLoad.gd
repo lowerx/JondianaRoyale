@@ -12,7 +12,7 @@ var location = {
 	"trees": 0.00
 }
 
-var level = 10.0
+var level = 12.0
 
 var ability = {
 	"name": null
@@ -30,7 +30,7 @@ var gun = {
 var enemies_numbers = []
 var enemies = []
 
-var boss_dmg = 4
+var boss_dmg = 20
 
 
 func _ready():

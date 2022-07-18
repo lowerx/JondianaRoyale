@@ -16,6 +16,11 @@
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
+"frames": [ ExtResource( 4 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "stay",
+"speed": 2.0
+}, {
 "frames": [ ExtResource( 7 ), ExtResource( 5 ) ],
 "loop": false,
 "name": "defeat",
@@ -25,11 +30,6 @@ animations = [ {
 "loop": false,
 "name": "death",
 "speed": 2.5
-}, {
-"frames": [ ExtResource( 4 ), ExtResource( 3 ) ],
-"loop": true,
-"name": "stay",
-"speed": 2.0
 }, {
 "frames": [ ExtResource( 1 ), ExtResource( 6 ) ],
 "loop": true,
@@ -45,10 +45,12 @@ height = 176.065
 collision_layer = 2
 collision_mask = 15
 script = ExtResource( 2 )
+next_scene_path = "res://src/Scenes/Levels/Lama.tscn"
 
 [node name="AnimatedBoss" type="AnimatedSprite" parent="."]
 frames = SubResource( 3 )
 animation = "stay"
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

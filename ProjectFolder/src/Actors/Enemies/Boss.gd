@@ -1,9 +1,11 @@
 extends KinematicBody2D
 
-var hp = 100
-var maxHp = 100
+var hp = 1000
+var maxHp = 1000
 var speed = 80
-var attackRate = 1.0
+var attackRate = 3.0
+
+export(String, FILE) var next_scene_path: = ""
 
 var xpToGive : int = 90
 
@@ -71,7 +73,7 @@ func die ():
 	
 	target.give_xp(xpToGive)
 	
-	$AnimatedBoss.play("defeat")
+	$AnimatedBoss.play("death")
 	
 	DeathTimer.start()
 
@@ -89,5 +91,8 @@ func _on_ShootTimer_timeout() -> void:
 
 
 func _on_DeathTimer_timeout():
+	
+	AutoLoad.reset_values()
+	get_tree().change_scene(next_scene_path)
 	
 	queue_free()

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Knife hit 2.wav-34a4fadbf61c1417762f12aa080d0107.sample"
+
+[deps]
+
+source_file="res://assets/sounds/Knife hit 2.wav"
+dest_files=[ "res://.import/Knife hit 2.wav-34a4fadbf61c1417762f12aa080d0107.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
