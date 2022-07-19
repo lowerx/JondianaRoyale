@@ -159,13 +159,13 @@ script = ExtResource( 2 )
 
 [node name="AnimatedEnemy" type="AnimatedSprite" parent="."]
 frames = SubResource( 3 )
-animation = "snake_stay"
+animation = "skeleton_stay"
 frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0.999992, 20.5 )
-scale = Vector2( 72.5892, 29.7753 )
+position = Vector2( 0.999992, 2.5 )
+scale = Vector2( 37.6964, 82.6314 )
 shape = SubResource( 4 )
 
 [node name="FirePoint" type="Node2D" parent="."]
@@ -179,8 +179,8 @@ collision_layer = 2
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2( 0.886757, 20.0662 )
-scale = Vector2( 21.2134, 20.4574 )
+position = Vector2( 0.295921, 1.29831 )
+scale = Vector2( 7.90622, 14.1788 )
 shape = SubResource( 5 )
 
 [node name="DeathTimer" type="Timer" parent="."]

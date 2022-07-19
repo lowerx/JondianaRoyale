@@ -15,7 +15,6 @@ var enemy_name = ""
 
 var death_animation : bool = false
 
-onready var target = get_node("/root/TestingLevel/Player")
 onready var timer = $Timer
 onready var DeathTimer = $DeathTimer
 
@@ -47,26 +46,26 @@ func _physics_process (delta):
 	
 		$AnimatedEnemy.play(self.enemy_name + "_run")
 		
-		var dist = position.distance_to(target.position)
+		var dist = position.distance_to(AutoLoad.target.position)
 		
 		if dist > attackDist and dist < chaseDist:
 			
-			var vel = (target.position - position).normalized()
+			var vel = (AutoLoad.target.position - position).normalized()
 			move_and_slide(vel * speed)
 
 
 func _on_Timer_timeout():
 	
-	if position.distance_to(target.position) <= attackDist:
+	if position.distance_to(AutoLoad.target.position) <= attackDist:
 		
-		target.take_damage(damage)
+		AutoLoad.target.take_damage(damage)
 
 
 func die ():
 	
 	self.death_animation = true
 	
-	target.give_xp(xpToGive)
+	AutoLoad.target.give_xp(xpToGive)
 	
 	$AnimatedEnemy.play(enemy_name + "_death")
 	

@@ -32,13 +32,12 @@ var enemies = []
 
 var boss_dmg = 20
 
+var target = null
+
 
 func _ready():
+	
 	randomize()
-
-
-func _process(delta):
-	pass
 
 
 func game_scene():

@@ -1,25 +1,25 @@
 [gd_scene load_steps=25 format=2]
 
-[ext_resource path="res://assets/dice/simpledice.png" type="Texture" id=1]
+[ext_resource path="res://assets/dices/simpledice.png" type="Texture" id=1]
 [ext_resource path="res://src/Objects/Dices.gd" type="Script" id=2]
-[ext_resource path="res://assets/dice/enemy/snake_dice.png" type="Texture" id=3]
-[ext_resource path="res://assets/dice/weapon/fists_dice.png" type="Texture" id=4]
-[ext_resource path="res://assets/dice/ability/invisibility_dice.png" type="Texture" id=5]
-[ext_resource path="res://assets/dice/ability/speedup_dice.png" type="Texture" id=6]
-[ext_resource path="res://assets/dice/ability/walking_dice.png" type="Texture" id=7]
-[ext_resource path="res://assets/dice/ability/walls_dice.png" type="Texture" id=8]
-[ext_resource path="res://assets/dice/enemy/mummy_dice.png" type="Texture" id=9]
-[ext_resource path="res://assets/dice/weapon/bow_dice.png" type="Texture" id=10]
-[ext_resource path="res://assets/dice/enemy/tribeman_dice.png" type="Texture" id=11]
-[ext_resource path="res://assets/dice/ability/dashing_dice.png" type="Texture" id=12]
-[ext_resource path="res://assets/dice/ability/extrahp_dice.png" type="Texture" id=13]
-[ext_resource path="res://assets/dice/enemy/skeleton_dice.png" type="Texture" id=14]
-[ext_resource path="res://assets/dice/weapon/sniperrifle_dice.png" type="Texture" id=15]
-[ext_resource path="res://assets/dice/weapon/ariffle_dice.png" type="Texture" id=16]
-[ext_resource path="res://assets/dice/weapon/knife_dice.png" type="Texture" id=17]
-[ext_resource path="res://assets/dice/enemy/th_dice.png" type="Texture" id=18]
-[ext_resource path="res://assets/dice/weapon/shotgun_dice.png" type="Texture" id=19]
-[ext_resource path="res://assets/dice/enemy/witch_dice.png" type="Texture" id=20]
+[ext_resource path="res://assets/dices/enemy/snake_dice.png" type="Texture" id=3]
+[ext_resource path="res://assets/dices/weapon/fists_dice.png" type="Texture" id=4]
+[ext_resource path="res://assets/dices/ability/invisibility_dice.png" type="Texture" id=5]
+[ext_resource path="res://assets/dices/ability/speedup_dice.png" type="Texture" id=6]
+[ext_resource path="res://assets/dices/ability/walking_dice.png" type="Texture" id=7]
+[ext_resource path="res://assets/dices/ability/walls_dice.png" type="Texture" id=8]
+[ext_resource path="res://assets/dices/enemy/mummy_dice.png" type="Texture" id=9]
+[ext_resource path="res://assets/dices/weapon/bow_dice.png" type="Texture" id=10]
+[ext_resource path="res://assets/dices/enemy/tribeman_dice.png" type="Texture" id=11]
+[ext_resource path="res://assets/dices/ability/dashing_dice.png" type="Texture" id=12]
+[ext_resource path="res://assets/dices/ability/extrahp_dice.png" type="Texture" id=13]
+[ext_resource path="res://assets/dices/enemy/skeleton_dice.png" type="Texture" id=14]
+[ext_resource path="res://assets/dices/weapon/sniperrifle_dice.png" type="Texture" id=15]
+[ext_resource path="res://assets/dices/weapon/ariffle_dice.png" type="Texture" id=16]
+[ext_resource path="res://assets/dices/weapon/knife_dice.png" type="Texture" id=17]
+[ext_resource path="res://assets/dices/enemy/th_dice.png" type="Texture" id=18]
+[ext_resource path="res://assets/dices/weapon/shotgun_dice.png" type="Texture" id=19]
+[ext_resource path="res://assets/dices/enemy/witch_dice.png" type="Texture" id=20]
 [ext_resource path="res://assets/sounds/Rolling dice.wav" type="AudioStream" id=21]
 
 [sub_resource type="SpriteFrames" id=1]
@@ -29,7 +29,7 @@ animations = [ {
 "name": "default",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 5 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 13 ), ExtResource( 12 ), ExtResource( 6 ) ],
+"frames": [ ExtResource( 12 ), ExtResource( 13 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ],
 "loop": true,
 "name": "ability_dices",
 "speed": 5.0
@@ -42,7 +42,7 @@ animations = [ {
 "name": "default",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 17 ), ExtResource( 19 ), ExtResource( 16 ), ExtResource( 15 ), ExtResource( 4 ), ExtResource( 10 ) ],
+"frames": [ ExtResource( 16 ), ExtResource( 10 ), ExtResource( 4 ), ExtResource( 17 ), ExtResource( 19 ), ExtResource( 15 ) ],
 "loop": true,
 "name": "gun_dices",
 "speed": 5.0
@@ -55,7 +55,7 @@ animations = [ {
 "name": "default",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 3 ), ExtResource( 9 ), ExtResource( 11 ), ExtResource( 18 ), ExtResource( 20 ), ExtResource( 14 ) ],
+"frames": [ ExtResource( 9 ), ExtResource( 14 ), ExtResource( 3 ), ExtResource( 18 ), ExtResource( 11 ), ExtResource( 20 ) ],
 "loop": true,
 "name": "enemies_dices",
 "speed": 5.0
@@ -63,7 +63,7 @@ animations = [ {
 
 [node name="Dices" type="Node2D"]
 script = ExtResource( 2 )
-next_scene_path = "res://src/Scenes/Levels/TestingLevel.tscn"
+next_scene_path = "res://src/Scenes/Levels/TheLastFight.tscn"
 
 [node name="AbilityDice" type="AnimatedSprite" parent="."]
 position = Vector2( 150, 250 )

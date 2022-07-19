@@ -5,7 +5,7 @@ var move = Vector2.ZERO
 var look_vector = Vector2.ZERO
 var speed = 3
 
-onready var target = get_node("/root/TestingLevel/Player")
+onready var target = get_node("/root/TheLastFight/Player")
 
 
 func _ready() -> void:

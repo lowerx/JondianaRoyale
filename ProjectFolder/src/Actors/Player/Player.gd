@@ -22,7 +22,7 @@ signal player_fired_bullet(bullet, position, direction)
 signal player_fired_explosion(explosion, position, direction)
 
 onready var rayCast = $RayCast2D
-onready var ui = get_node("/root/TestingLevel/UICanvasLayer/UI")
+onready var ui = get_node("/root/TheLastFight/UICanvasLayer/UI")
 
 onready var bullet_path = preload("res://src/Objects/Bullet.tscn")
 onready var explosion_path = preload("res://src/Objects/Explosion.tscn")
@@ -33,6 +33,8 @@ onready var DeathTimer = $DeathTimer
 
 
 func _ready ():
+	
+	AutoLoad.target = self
 	
 	ui.update_level_text(curLevel)
 	ui.update_health_bar(self.hp, maxHp)
