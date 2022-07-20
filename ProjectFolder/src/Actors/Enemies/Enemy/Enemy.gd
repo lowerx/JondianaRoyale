@@ -1,7 +1,6 @@
 extends KinematicBody2D
 
 var hp = 0
-var maxHp = 0
 var speed = 0
 var damage = 0.00
 var attackRate : float = 0.0
@@ -42,7 +41,11 @@ func _process(delta):
 
 func _physics_process (delta):
 	
-	if not self.death_animation:
+	if not AutoLoad._game_scene:
+		
+		queue_free()
+	
+	elif not self.death_animation:
 	
 		$AnimatedEnemy.play(self.enemy_name + "_run")
 		
@@ -59,6 +62,8 @@ func _on_Timer_timeout():
 	if position.distance_to(AutoLoad.target.position) <= attackDist:
 		
 		AutoLoad.target.take_damage(damage)
+		
+		timer.start()
 
 
 func die ():
@@ -74,9 +79,11 @@ func die ():
 
 func _on_Area2D_area_entered(area):
 	
-	if area.get_name() == "BulletArea":
+	if area.is_in_group("bullets"):
 		
 		self.hp -= AutoLoad.gun["damage"]
+		
+		area.queue_free()
 
 
 func _on_DeathTimer_timeout():

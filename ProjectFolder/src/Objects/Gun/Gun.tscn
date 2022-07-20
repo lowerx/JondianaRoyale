@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://src/Objects/Gun/Gun.gd" type="Script" id=1]
 [ext_resource path="res://assets/actors/MainHero/weapons/bow/bowanim/2.png" type="Texture" id=2]
@@ -65,9 +65,16 @@ animations = [ {
 "speed": 2.0
 } ]
 
+[sub_resource type="RectangleShape2D" id=2]
+
 [node name="Gun" type="Node2D"]
+light_mask = 70
 script = ExtResource( 1 )
 
 [node name="AnimatedGun" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
-animation = "rifle_fire"
+animation = "sward_fire"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2( 8, 3 )
+shape = SubResource( 2 )

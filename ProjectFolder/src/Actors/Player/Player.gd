@@ -16,18 +16,17 @@ var facingDir = Vector2()
 
 var gun = null
 
-var dead : bool = false
-
 signal player_fired_bullet(bullet, position, direction)
 signal player_fired_explosion(explosion, position, direction)
 
 onready var rayCast = $RayCast2D
-onready var ui = get_node("/root/TheLastFight/UICanvasLayer/UI")
+onready var ui = get_node("/root/TestingLevel/UICanvasLayer/UI")
 
-onready var bullet_path = preload("res://src/Objects/Bullet.tscn")
-onready var explosion_path = preload("res://src/Objects/Explosion.tscn")
-onready var end_of_gun = $FirePoint/EndOfGun
+onready var player_bullet_path = preload("res://src/Actors/Player/PlayerBullet/Bullet.tscn")
+onready var explosion_path = preload("res://src/Actors/Player/PlayerExplosionBullet/Explosion.tscn")
 onready var gun_path = preload("res://src/Objects/Gun/Gun.tscn")
+
+onready var end_of_gun = $FirePoint/EndOfGun
 
 onready var DeathTimer = $DeathTimer
 
@@ -46,7 +45,7 @@ func _ready ():
 
 func get_gun():
 	
-	gun = gun_path.instance()
+	gun = self.gun_path.instance()
 	add_child(gun)
 	gun.set_name(AutoLoad.gun["name"])
 	gun.global_position = end_of_gun.global_position
@@ -54,7 +53,11 @@ func get_gun():
 
 func _physics_process (delta):
 	
-	if not self.dead:
+	if not AutoLoad._game_scene:
+		
+		queue_free()
+	
+	elif not AutoLoad.player_dead:
   
 		vel = Vector2()
 	  
@@ -142,12 +145,11 @@ func take_damage (dmgToTake):
 		
 		die()
 		ui.update_health_bar(self.hp, maxHp)
-		AutoLoad.not_game_scene()
 
 
 func die ():
 	
-	self.dead = true
+	AutoLoad.player_dead = true
 	
 	$PlayerModel.stop()
 	
@@ -158,7 +160,7 @@ func die ():
 
 func _process (delta):
 	
-	if not self.dead:
+	if not AutoLoad.player_dead:
 	
 		if Input.is_action_just_pressed("interact"):
 			
@@ -210,7 +212,7 @@ func shoot():
 		return
 		
 	fire_time = get_time()
-	var bullet = bullet_path.instance()
+	var bullet = self.player_bullet_path.instance()
 	var direction = (get_global_mouse_position() - end_of_gun.global_position).normalized()
 	emit_signal("player_fired_bullet", bullet, end_of_gun.global_position, direction)
 
@@ -221,24 +223,22 @@ func beat():
 		return
 		
 	fire_time = get_time()
-	var explosion = explosion_path.instance()
+	var explosion = self.explosion_path.instance()
 	var direction = (get_global_mouse_position() - end_of_gun.global_position).normalized()
 	emit_signal("player_fired_explosion", explosion, end_of_gun.global_position, direction)
 
 
 func _on_Area2D_area_entered(area):
 	
-	if self.hp > 0:
+	if area.is_in_group("boss_bullets"):
 		
 		self.hp -= AutoLoad.boss_dmg
-		
-	else:
-		
-		die()
 
 
 func _on_DeathTimer_timeout():
 	
+	AutoLoad.not_game_scene()
+	
 	queue_free()
 	
-	get_tree().change_scene("res://src/UI/QuitTheLevel/YouDiedScreen.tscn")
+	get_tree().change_scene("res://src/UI/YouDiedScreen/YouDiedScreen.tscn")

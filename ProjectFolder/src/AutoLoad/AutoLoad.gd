@@ -30,9 +30,12 @@ var gun = {
 var enemies_numbers = []
 var enemies = []
 
-var boss_dmg = 20
+var boss_hp = 100
+var boss_dmg = 5
 
 var target = null
+
+var player_dead : bool = false
 
 
 func _ready():
@@ -41,27 +44,47 @@ func _ready():
 
 
 func game_scene():
+	
 	_game_scene = true
+	
+	self.boss_hp = max(100 * self.level, 1500)
+	self.boss_dmg = max(5 + self.level * 2, 50.0)
 
 
 func not_game_scene():
+	
 	_game_scene = false
 
 
 func reset_values():
+	
 	get_tree().paused = false
-	self.location = {
+	
+	var location = {
 		"bushes": 0.00,
 		"trees": 0.00
 	}
-	self.enemies_numbers = []
-	self.enemies = []
-	self.gun = {
+
+	var level = 12.0
+
+	var ability = {
+		"name": null
+	}
+
+	var gun = {
 		"name": "",
-		"damage": 0,
+		"damage": 0.00,
 		"damage_range": 0.00,
 		"fire_rate": 0.00,
 		"shotability": null,
 		"bullet_timer": null
 	}
+
+	var enemies_numbers = []
+	var enemies = []
+
+	var boss_dmg = 20
+
+	var target = null
+	
 	not_game_scene()

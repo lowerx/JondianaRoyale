@@ -86,6 +86,7 @@ next={
 2d_physics/layer_4="player_bullet"
 2d_physics/layer_5="boss_bullet"
 2d_physics/layer_6="chest"
+2d_physics/layer_7="walls"
 
 [physics]
 

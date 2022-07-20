@@ -7,7 +7,7 @@ layer = -100
 scale = Vector2( 0.56, 0.56 )
 transform = Transform2D( 0.56, 0, 0, 0.56, 0, 0 )
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TitleBackground" type="TextureRect" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
 texture = ExtResource( 1 )

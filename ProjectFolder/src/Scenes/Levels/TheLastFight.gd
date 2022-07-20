@@ -8,6 +8,9 @@ var projectResolution = Vector2(30, 30)
 
 
 func _ready():
+	
+	AutoLoad.target = $Player
+	
 	player.connect("player_fired_bullet", bullet_manager, "handle_bullet_spawned")
 	player.connect("player_fired_explosion", bullet_manager, "handle_explosion_spawned")
 	

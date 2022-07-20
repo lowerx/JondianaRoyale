@@ -5,11 +5,9 @@ var move = Vector2.ZERO
 var look_vector = Vector2.ZERO
 var speed = 3
 
-onready var target = get_node("/root/TheLastFight/Player")
-
 
 func _ready() -> void:
-	look_vector = target.position - global_position
+	look_vector = AutoLoad.target.position - global_position
 
 
 func _physics_process(delta: float) -> void:

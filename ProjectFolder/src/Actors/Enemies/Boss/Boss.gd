@@ -1,7 +1,5 @@
 extends KinematicBody2D
 
-var hp = 1000
-var maxHp = 1000
 var speed = 80
 var attackRate = 3.0
 
@@ -16,12 +14,9 @@ var chaseDist : int = 800
 
 var dead : bool = false
 
-onready var target = get_node("/root/TestingLevel/Player")
 onready var ShootTimer = $ShootTimer
 onready var DeathTimer = $DeathTimer
-
-
-onready var bullet_path = preload("res://src/Objects/boss_bullet.tscn")
+onready var bullet_path = preload("res://src/Actors/Enemies/Boss/BossBullet/BossBullet.tscn")
 
 
 func _ready ():
@@ -40,22 +35,26 @@ func _process(delta):
 			
 			queue_free()
 			
-		if hp <= 0:
+		if AutoLoad.boss_hp <= 0:
 			
 			die()
 
 
 func _physics_process (delta):
 	
-	if not self.dead:
+	if not AutoLoad._game_scene:
+		
+		queue_free()
+	
+	elif not self.dead and not AutoLoad.player_dead:
 		
 		$AnimatedBoss.play("run")
 			
-		var dist = position.distance_to(self.target.position)
+		var dist = position.distance_to(AutoLoad.target.position)
 		
 		if dist > self.attackDist and dist < self.chaseDist:
 			
-			var vel = (self.target.position - position).normalized()
+			var vel = (AutoLoad.target.position - position).normalized()
 			move_and_slide(vel * speed)
 
 
@@ -71,7 +70,7 @@ func die ():
 	
 	self.dead = true
 	
-	target.give_xp(xpToGive)
+	AutoLoad.target.give_xp(xpToGive)
 	
 	$AnimatedBoss.play("death")
 	
@@ -80,12 +79,12 @@ func die ():
 
 func _on_Area2D_area_entered(area: Area2D) -> void:
 	
-	hp -= AutoLoad.gun["damage"]
+	AutoLoad.boss_hp -= AutoLoad.gun["damage"]
 
 
 func _on_ShootTimer_timeout() -> void:
 	
-	if position.distance_to(self.target.position) <= self.attackDist:
+	if position.distance_to(AutoLoad.target.position) <= self.attackDist:
 		
 		shoot()
 

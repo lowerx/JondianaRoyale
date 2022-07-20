@@ -2,12 +2,13 @@ extends Node2D
 
 onready var bullet_manager = $Bullet_manager
 onready var player = $Player
-onready var enemy_path = preload("res://src/Actors/Enemies/Enemy.tscn")
+onready var enemy_path = preload("res://src/Actors/Enemies/Enemy/Enemy.tscn")
 
 var projectResolution = Vector2(30, 30)
 
 
 func _ready():
+	
 	player.connect("player_fired_bullet", bullet_manager, "handle_bullet_spawned")
 	player.connect("player_fired_explosion", bullet_manager, "handle_explosion_spawned")
 	
@@ -52,7 +53,7 @@ func get_the_player(name, enemy_object):
 		stats["speed"] = 400
 		stats["damage"] = 1
 		stats["attack_rate"] = 1.0
-		stats["attack_distance"] = 20
+		stats["attack_distance"] = 200
 		stats["chase_distance"] = 200
 		stats["enemy_scale"] = 1.0 / 10.0
 		
@@ -62,7 +63,7 @@ func get_the_player(name, enemy_object):
 		stats["speed"] = 100
 		stats["damage"] = 2
 		stats["attack_rate"] = 3.0
-		stats["attack_distance"] = 30
+		stats["attack_distance"] = 300
 		stats["chase_distance"] = 250
 		stats["enemy_scale"] = 1.0 / 4.0
 	
@@ -72,7 +73,7 @@ func get_the_player(name, enemy_object):
 		stats["speed"] = 150
 		stats["damage"] = 3
 		stats["attack_rate"] = 2.0
-		stats["attack_distance"] = 35
+		stats["attack_distance"] = 350
 		stats["chase_distance"] = 300
 		stats["enemy_scale"] = 1.0 / 4.0
 	
@@ -82,7 +83,7 @@ func get_the_player(name, enemy_object):
 		stats["speed"] = 200
 		stats["damage"] = 4
 		stats["attack_rate"] = 2.0
-		stats["attack_distance"] = 40
+		stats["attack_distance"] = 400
 		stats["chase_distance"] = 400
 		stats["enemy_scale"] = 1.0 / 4.0
 	
@@ -92,7 +93,7 @@ func get_the_player(name, enemy_object):
 		stats["speed"] = 240
 		stats["damage"] = 5
 		stats["attack_rate"] = 1.5
-		stats["attack_distance"] = 50
+		stats["attack_distance"] = 500
 		stats["chase_distance"] = 400
 		stats["enemy_scale"] = 1.0 / 8.0
 	
@@ -102,7 +103,7 @@ func get_the_player(name, enemy_object):
 		stats["speed"] = 220
 		stats["damage"] = 2
 		stats["attack_rate"] = 2.0
-		stats["attack_distance"] = 30
+		stats["attack_distance"] = 300
 		stats["chase_distance"] = 300
 		stats["enemy_scale"] = 1.0 / 4.0
 	

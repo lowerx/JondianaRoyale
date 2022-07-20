@@ -19,4 +19,3 @@ func set_paused(value: bool) -> void:
 	paused = value
 	scene_tree.paused = value
 	pause_overlay.visible = value
-	

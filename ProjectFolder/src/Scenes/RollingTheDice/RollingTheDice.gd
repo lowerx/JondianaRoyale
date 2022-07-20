@@ -5,28 +5,28 @@ var GunRandom = RandomNumberGenerator.new()
 var EnemiesRandom = RandomNumberGenerator.new()
 
 onready var ABILITIES_LIST = [
-	"invincibility",
-	"walking_dice",
-	"walls",
-	"extra_hp",
 	"dash",
-	"speed"
+	"extra_hp",
+	"invincibility",
+	"speed",
+	"walking_dice",
+	"walls"
 ]
 onready var GUNS_LIST = [
+	"rifle",
+	"bow",
+	"fists",
 	"sword",
 	"shotgun",
-	"rifle",
-	"sniper",
-	"fists",
-	"bow"
+	"sniper"
 ]
 onready var ENEMIES_LIST = [
-	"snake",
 	"mummy",
-	"tribesman",
+	"skeleton",
+	"snake",
 	"treasure_hunter",
-	"witch",
-	"skeleton"
+	"tribesman",
+	"witch"
 ]
 onready var Dices = $Dices
 
@@ -101,10 +101,10 @@ func create_gun(name):
 		_complete_gun(70.0, 3.0, 2.0, true, 1.0)
 
 
-func _complete_gun(damage, damage_range, periods_between_shots, shotability, bullet_timer=0.1):
+func _complete_gun(damage, attack_distance, periods_between_shots, shotability, bullet_timer=0.1):
 	
 	AutoLoad.gun["damage"] = damage
-	AutoLoad.gun["damage_range"] = damage_range
+	AutoLoad.gun["attack_distance"] = attack_distance
 	AutoLoad.gun["fire_rate"] = periods_between_shots
 	AutoLoad.gun["shotability"] = shotability
 	AutoLoad.gun["bullet_timer"] = bullet_timer

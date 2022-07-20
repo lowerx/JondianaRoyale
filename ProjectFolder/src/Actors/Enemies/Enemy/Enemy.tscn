@@ -1,0 +1,188 @@
+[gd_scene load_steps=51 format=2]
+
+[ext_resource path="res://src/Actors/Enemies/Enemy/Enemy.gd" type="Script" id=1]
+[ext_resource path="res://assets/actors/enemy/treasurehunters/deathanim/1.png" type="Texture" id=2]
+[ext_resource path="res://assets/actors/enemy/mummy/walking.standing/walking/2.png" type="Texture" id=3]
+[ext_resource path="res://assets/actors/enemy/tribeman/walking/2.png" type="Texture" id=4]
+[ext_resource path="res://assets/actors/enemy/Witch/deathanim/1.png" type="Texture" id=5]
+[ext_resource path="res://assets/actors/enemy/treasurehunters/standing/2.png" type="Texture" id=6]
+[ext_resource path="res://assets/actors/enemy/mummy/walking.standing/standing/2.png" type="Texture" id=7]
+[ext_resource path="res://assets/actors/enemy/Witch/deathanim/4.png" type="Texture" id=8]
+[ext_resource path="res://assets/actors/enemy/skeleton/deathanim/2.png" type="Texture" id=9]
+[ext_resource path="res://assets/actors/enemy/treasurehunters/walking/1.png" type="Texture" id=10]
+[ext_resource path="res://assets/actors/enemy/tribeman/deathanim/1.png" type="Texture" id=11]
+[ext_resource path="res://assets/actors/enemy/mummy/death&attack-anim/4.png" type="Texture" id=12]
+[ext_resource path="res://assets/actors/enemy/treasurehunters/deathanim/2.png" type="Texture" id=13]
+[ext_resource path="res://assets/actors/enemy/mummy/death&attack-anim/5.png" type="Texture" id=14]
+[ext_resource path="res://assets/actors/enemy/mummy/death&attack-anim/2.png" type="Texture" id=15]
+[ext_resource path="res://assets/actors/enemy/mummy/death&attack-anim/7.png" type="Texture" id=16]
+[ext_resource path="res://assets/actors/enemy/tribeman/deathanim/3.png" type="Texture" id=17]
+[ext_resource path="res://assets/actors/enemy/skeleton/walking.standing/standing/1.png" type="Texture" id=18]
+[ext_resource path="res://assets/actors/enemy/skeleton/walking.standing/walking/2.png" type="Texture" id=19]
+[ext_resource path="res://assets/actors/enemy/skeleton/walking.standing/standing/2.png" type="Texture" id=20]
+[ext_resource path="res://assets/actors/enemy/snake/attackanim/1.png" type="Texture" id=21]
+[ext_resource path="res://assets/actors/enemy/skeleton/deathanim/1.png" type="Texture" id=22]
+[ext_resource path="res://assets/actors/enemy/Witch/deathanim/2.png" type="Texture" id=23]
+[ext_resource path="res://assets/actors/enemy/snake/deathanim/1.png" type="Texture" id=24]
+[ext_resource path="res://assets/actors/enemy/snake/walking-standing/standing/2.png" type="Texture" id=25]
+[ext_resource path="res://assets/actors/enemy/snake/walking-standing/standing/1.png" type="Texture" id=26]
+[ext_resource path="res://assets/actors/enemy/snake/deathanim/2.png" type="Texture" id=27]
+[ext_resource path="res://assets/actors/enemy/snake/attackanim/2.png" type="Texture" id=28]
+[ext_resource path="res://assets/actors/enemy/Witch/walking.standing/1.png" type="Texture" id=29]
+[ext_resource path="res://assets/actors/enemy/Witch/deathanim/3.png" type="Texture" id=30]
+[ext_resource path="res://assets/actors/enemy/snake/deathanim/0.png" type="Texture" id=31]
+[ext_resource path="res://assets/actors/enemy/snake/walking-standing/walking/2.png" type="Texture" id=32]
+[ext_resource path="res://assets/actors/enemy/tribeman/standing/2.png" type="Texture" id=33]
+[ext_resource path="res://assets/actors/enemy/mummy/walking.standing/walking/1.png" type="Texture" id=34]
+[ext_resource path="res://assets/actors/enemy/treasurehunters/deathanim/3.png" type="Texture" id=35]
+[ext_resource path="res://assets/actors/enemy/mummy/walking.standing/standing/1.png" type="Texture" id=36]
+[ext_resource path="res://assets/actors/enemy/mummy/death&attack-anim/1.png" type="Texture" id=37]
+[ext_resource path="res://assets/actors/enemy/treasurehunters/walking/2.png" type="Texture" id=38]
+[ext_resource path="res://assets/actors/enemy/skeleton/walking.standing/walking/1.png" type="Texture" id=39]
+[ext_resource path="res://assets/actors/enemy/Witch/walking.standing/2.png" type="Texture" id=40]
+[ext_resource path="res://assets/actors/enemy/snake/walking-standing/walking/1.png" type="Texture" id=41]
+[ext_resource path="res://assets/actors/enemy/tribeman/deathanim/2.png" type="Texture" id=42]
+[ext_resource path="res://assets/actors/enemy/mummy/death&attack-anim/3.png" type="Texture" id=43]
+[ext_resource path="res://assets/actors/enemy/mummy/death&attack-anim/6.png" type="Texture" id=44]
+[ext_resource path="res://assets/actors/enemy/tribeman/walking/1.png" type="Texture" id=45]
+[ext_resource path="res://assets/actors/enemy/treasurehunters/standing/1.png" type="Texture" id=46]
+[ext_resource path="res://assets/actors/enemy/tribeman/standing/1.png" type="Texture" id=47]
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 39 ), ExtResource( 19 ) ],
+"loop": true,
+"name": "skeleton_run",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 18 ), ExtResource( 20 ) ],
+"loop": true,
+"name": "skeleton_stay",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 10 ), ExtResource( 38 ) ],
+"loop": true,
+"name": "treasure_hunter_run",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 46 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "treasure_hunter_stay",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 29 ), ExtResource( 40 ) ],
+"loop": true,
+"name": "witch_run",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 23 ), ExtResource( 30 ), ExtResource( 8 ) ],
+"loop": false,
+"name": "witch_death",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 31 ), ExtResource( 24 ), ExtResource( 27 ) ],
+"loop": false,
+"name": "snake_death",
+"speed": 2.5
+}, {
+"frames": [ ExtResource( 41 ), ExtResource( 32 ) ],
+"loop": true,
+"name": "snake_run",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 13 ), ExtResource( 35 ) ],
+"loop": false,
+"name": "treasure_hunter_death",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 36 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "mummy_stay",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 34 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "mummy_run",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 22 ), ExtResource( 9 ) ],
+"loop": false,
+"name": "skeleton_death",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 47 ), ExtResource( 33 ) ],
+"loop": true,
+"name": "tribesman_stay",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 11 ), ExtResource( 42 ), ExtResource( 17 ) ],
+"loop": false,
+"name": "tribesman_death",
+"speed": 2.5
+}, {
+"frames": [ ExtResource( 45 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "tribesman_run",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 21 ), ExtResource( 28 ) ],
+"loop": true,
+"name": "snake_attack",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 29 ), ExtResource( 40 ) ],
+"loop": true,
+"name": "witch_stay",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 26 ), ExtResource( 25 ) ],
+"loop": true,
+"name": "snake_stay",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 37 ), ExtResource( 15 ), ExtResource( 43 ), ExtResource( 12 ), ExtResource( 14 ), ExtResource( 44 ), ExtResource( 16 ) ],
+"loop": false,
+"name": "mummy_death",
+"speed": 3.5
+} ]
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 6.08074, 8.50999 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 20.7918, 12.2412 )
+
+[node name="Enemy" type="KinematicBody2D"]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource( 1 )
+
+[node name="AnimatedEnemy" type="AnimatedSprite" parent="."]
+frames = SubResource( 3 )
+animation = "snake_stay"
+playing = true
+
+[node name="EnemyCollision" type="CollisionShape2D" parent="."]
+scale = Vector2( 27, 18 )
+shape = SubResource( 4 )
+
+[node name="FirePoint" type="Node2D" parent="."]
+position = Vector2( 0, -25.0622 )
+scale = Vector2( 0.1, 0.1 )
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="KillArea" type="Area2D" parent="." groups=["enemies"]]
+collision_layer = 2
+collision_mask = 8
+
+[node name="KillCollision" type="CollisionShape2D" parent="KillArea"]
+position = Vector2( 0.295921, 1.29831 )
+scale = Vector2( 8, 13 )
+shape = SubResource( 5 )
+
+[node name="DeathTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="area_entered" from="KillArea" to="." method="_on_Area2D_area_entered"]
+[connection signal="timeout" from="DeathTimer" to="." method="_on_DeathTimer_timeout"]

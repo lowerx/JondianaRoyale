@@ -7,7 +7,7 @@ extents = Vector2( 81, 41.5 )
 
 [node name="TheEnd" type="Node2D"]
 script = ExtResource( 1 )
-next_scene_path = "res://src/Scenes/Levels/Lama.tscn"
+next_scene_path = "res://src/Scenes/Levels/YouWonScene/YouWon.tscn"
 
 [node name="TheEnd" type="Area2D" parent="."]
 collision_mask = 64

@@ -8,9 +8,9 @@
 size = 70
 font_data = ExtResource( 2 )
 
-[node name="Lama" type="Node2D"]
+[node name="YouWon" type="Node2D"]
 
-[node name="Label" type="Label" parent="."]
+[node name="YouFoundTheLamaLabel" type="Label" parent="."]
 margin_left = 245.0
 margin_top = 86.0
 margin_right = 814.0
