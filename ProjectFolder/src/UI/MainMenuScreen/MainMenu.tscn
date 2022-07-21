@@ -43,7 +43,7 @@ next_scene_path = "res://src/Scenes/RollingTheDice/RollingTheDice.tscn"
 margin_top = 138.0
 margin_bottom = 272.0
 icon = ExtResource( 4 )
-next_scene_path = "res://src/Scenes/RollingTheDice/RollingTheDice.tscn"
+next_scene_path = "res://src/UI/HelpScreen/HelpScreen.tscn"
 
 [node name="ExitButton" parent="MenuContainer" instance=ExtResource( 5 )]
 margin_top = 276.0
