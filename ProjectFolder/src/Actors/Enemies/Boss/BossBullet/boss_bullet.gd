@@ -22,14 +22,22 @@ func _on_BulletArea_body_entered(body):
 	
 	if not body.is_in_group("boss"):
 		
-		hide()
+		if body.is_in_group("player"):
+			
+			AutoLoad.target.take_damage(AutoLoad.boss_dmg)
+		
+		queue_free()
 
 
 func _on_BulletArea_area_entered(area):
 	
 	if not area.is_in_group("boss"):
 		
-		hide()
+		if area.is_in_group("player"):
+			
+			AutoLoad.target.take_damage(AutoLoad.boss_dmg)
+		
+		queue_free()
 
 
 func _on_KillTimer_timeout():

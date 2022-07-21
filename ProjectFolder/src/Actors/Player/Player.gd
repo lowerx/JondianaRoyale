@@ -228,13 +228,6 @@ func beat():
 	emit_signal("player_fired_explosion", explosion, end_of_gun.global_position, direction)
 
 
-func _on_Area2D_area_entered(area):
-	
-	if area.is_in_group("boss_bullets"):
-		
-		self.hp -= AutoLoad.boss_dmg
-
-
 func _on_DeathTimer_timeout():
 	
 	AutoLoad.not_game_scene()
