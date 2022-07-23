@@ -33,6 +33,7 @@ func _process(delta):
 	
 	elif Input.is_action_just_released("next") and self.raw == "play":
 		
+		AutoLoad.game_scene()
 		get_tree().change_scene(next_scene_path)
 
 

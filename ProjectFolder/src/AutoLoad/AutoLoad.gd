@@ -60,18 +60,18 @@ func reset_values():
 	
 	get_tree().paused = false
 	
-	var location = {
+	self.location = {
 		"bushes": 0.00,
 		"trees": 0.00
 	}
 
-	var level = 12.0
+	self.level = 12.0
 
-	var ability = {
+	self.ability = {
 		"name": null
 	}
 
-	var gun = {
+	self.gun = {
 		"name": "",
 		"damage": 0.00,
 		"damage_range": 0.00,
@@ -80,11 +80,13 @@ func reset_values():
 		"bullet_timer": null
 	}
 
-	var enemies_numbers = []
-	var enemies = []
+	self.enemies_numbers = []
+	self.enemies = []
 
-	var boss_dmg = 20
+	self.boss_dmg = 20
 
-	var target = null
+	self.target = null
+	
+	self.player_dead = false
 	
 	not_game_scene()

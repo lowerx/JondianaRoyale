@@ -12,8 +12,6 @@ func _ready():
 	player.connect("player_fired_bullet", bullet_manager, "handle_bullet_spawned")
 	player.connect("player_fired_explosion", bullet_manager, "handle_explosion_spawned")
 	
-	AutoLoad.game_scene()
-	
 	for enemy in AutoLoad.enemies_numbers:
 		
 		var enemy_object = enemy_path.instance()

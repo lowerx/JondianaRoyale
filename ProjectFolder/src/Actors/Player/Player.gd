@@ -230,8 +230,8 @@ func beat():
 
 func _on_DeathTimer_timeout():
 	
-	AutoLoad.not_game_scene()
+	print("DEAD")
 	
-	queue_free()
+	AutoLoad.not_game_scene()
 	
 	get_tree().change_scene("res://src/UI/YouDiedScreen/YouDiedScreen.tscn")
