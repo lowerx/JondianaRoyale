@@ -20,7 +20,7 @@ signal player_fired_bullet(bullet, position, direction)
 signal player_fired_explosion(explosion, position, direction)
 
 onready var rayCast = $RayCast2D
-onready var ui = get_node("/root/TestingLevel/UICanvasLayer/UI")
+onready var ui = get_node("/root/LevelScene/UICanvasLayer/UI")
 
 onready var player_bullet_path = preload("res://src/Actors/Player/PlayerBullet/Bullet.tscn")
 onready var explosion_path = preload("res://src/Actors/Player/PlayerExplosionBullet/Explosion.tscn")

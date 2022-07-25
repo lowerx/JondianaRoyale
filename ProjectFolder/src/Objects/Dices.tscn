@@ -24,14 +24,14 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 12 ), ExtResource( 13 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ],
-"loop": true,
-"name": "ability_dices",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 1 ) ],
 "loop": true,
 "name": "default",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 12 ), ExtResource( 13 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "ability_dices",
 "speed": 5.0
 } ]
 
@@ -50,20 +50,20 @@ animations = [ {
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
-"frames": [ ExtResource( 9 ), ExtResource( 14 ), ExtResource( 3 ), ExtResource( 18 ), ExtResource( 11 ), ExtResource( 20 ) ],
-"loop": true,
-"name": "enemies_dices",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 1 ) ],
 "loop": true,
 "name": "default",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ), ExtResource( 14 ), ExtResource( 3 ), ExtResource( 18 ), ExtResource( 11 ), ExtResource( 20 ) ],
+"loop": true,
+"name": "enemies_dices",
 "speed": 5.0
 } ]
 
 [node name="Dices" type="Node2D"]
 script = ExtResource( 2 )
-next_scene_path = "res://src/Scenes/Levels/TestingLevel.tscn"
+next_scene_path = "res://src/Scenes/Levels/LevelScene/LevelScene.tscn"
 
 [node name="AbilityDice" type="AnimatedSprite" parent="."]
 position = Vector2( 150, 250 )

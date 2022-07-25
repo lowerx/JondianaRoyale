@@ -1,7 +1,7 @@
 extends Camera2D
 
 
-onready var target = get_node("/root/TestingLevel/Player")
+onready var target = get_node("/root/LevelScene/Level/Player")
 
 
 func _process (delta):

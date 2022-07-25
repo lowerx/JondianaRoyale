@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 var speed = 80
-var attackRate = 3.0
+var attackRate = 6.0
 
 export(String, FILE) var next_scene_path: = ""
 

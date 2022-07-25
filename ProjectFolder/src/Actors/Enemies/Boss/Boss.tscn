@@ -16,16 +16,6 @@
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
-"frames": [ ExtResource( 5 ), ExtResource( 3 ) ],
-"loop": false,
-"name": "defeat",
-"speed": 1.0
-}, {
-"frames": [ ExtResource( 6 ), ExtResource( 9 ), ExtResource( 12 ), ExtResource( 8 ), ExtResource( 4 ), ExtResource( 7 ) ],
-"loop": false,
-"name": "death",
-"speed": 2.5
-}, {
 "frames": [ ExtResource( 11 ), ExtResource( 2 ) ],
 "loop": true,
 "name": "run",
@@ -35,6 +25,16 @@ animations = [ {
 "loop": true,
 "name": "stay",
 "speed": 2.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 3 ) ],
+"loop": false,
+"name": "defeat",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 9 ), ExtResource( 12 ), ExtResource( 8 ), ExtResource( 4 ), ExtResource( 7 ) ],
+"loop": false,
+"name": "death",
+"speed": 2.5
 } ]
 
 [sub_resource type="CapsuleShape2D" id=1]
@@ -43,14 +43,13 @@ height = 176.065
 
 [node name="Boss" type="KinematicBody2D" groups=["boss"]]
 collision_layer = 4
-collision_mask = 3
+collision_mask = 67
 script = ExtResource( 10 )
 next_scene_path = "res://src/Scenes/Levels/YouWonScene/YouWon.tscn"
 
 [node name="AnimatedBoss" type="AnimatedSprite" parent="."]
 frames = SubResource( 3 )
 animation = "stay"
-frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
