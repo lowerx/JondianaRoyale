@@ -10,8 +10,8 @@ anchor_bottom = 1.0
 
 [node name="HelpLayer" type="CanvasLayer" parent="."]
 layer = -100
-scale = Vector2( 0.862, 1.28 )
-transform = Transform2D( 0.862, 0, 0, 1.28, 0, 0 )
+scale = Vector2( 1.21, 1.92 )
+transform = Transform2D( 1.21, 0, 0, 1.92, 0, 0 )
 
 [node name="HelpBackground" type="TextureRect" parent="HelpLayer"]
 margin_left = -324.0
@@ -21,7 +21,7 @@ margin_bottom = 794.0
 texture = ExtResource( 1 )
 
 [node name="MainMenuButton" parent="." instance=ExtResource( 2 )]
-margin_left = 350.0
-margin_top = 465.0
-margin_right = 702.0
-margin_bottom = 599.0
+margin_left = 550.0
+margin_top = 766.0
+margin_right = 902.0
+margin_bottom = 900.0

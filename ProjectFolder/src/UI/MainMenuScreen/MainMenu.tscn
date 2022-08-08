@@ -14,8 +14,9 @@ anchor_bottom = 1.0
 
 [node name="BackgroundLayer" type="CanvasLayer" parent="."]
 layer = -100
-scale = Vector2( 0.56, 0.56 )
-transform = Transform2D( 0.56, 0, 0, 0.56, 0, 0 )
+offset = Vector2( -85, 0 )
+scale = Vector2( 0.84, 0.84 )
+transform = Transform2D( 0.84, 0, 0, 0.84, -85, 0 )
 
 [node name="Background" type="TextureRect" parent="BackgroundLayer"]
 margin_right = 40.0
@@ -25,30 +26,32 @@ texture = ExtResource( 1 )
 [node name="Title" parent="." instance=ExtResource( 3 )]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 512, 300 )
+position = Vector2( 720, 450 )
 current = true
 
 [node name="MenuContainer" type="VBoxContainer" parent="."]
-margin_left = 400.0
-margin_top = 170.0
-margin_right = 752.0
-margin_bottom = 600.0
+margin_left = 610.0
+margin_top = 320.0
+margin_right = 962.0
+margin_bottom = 750.0
 rect_scale = Vector2( 0.8, 0.8 )
+alignment = 1
 
 [node name="PlayButton" parent="MenuContainer" instance=ExtResource( 2 )]
-margin_bottom = 134.0
-next_scene_path = "res://src/Scenes/RollingTheDice/RollingTheDice.tscn"
+margin_top = 10.0
+margin_bottom = 144.0
+next_scene_path = "res://src/UI/LevelMenuScreen/LevelMenu.tscn"
 
 [node name="HelpButton" parent="MenuContainer" instance=ExtResource( 2 )]
-margin_top = 138.0
-margin_bottom = 272.0
+margin_top = 148.0
+margin_bottom = 282.0
 icon = ExtResource( 4 )
 next_scene_path = "res://src/UI/HelpScreen/HelpScreen.tscn"
 
 [node name="ExitButton" parent="MenuContainer" instance=ExtResource( 5 )]
-margin_top = 276.0
+margin_top = 286.0
 margin_right = 352.0
-margin_bottom = 410.0
+margin_bottom = 420.0
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 6 )

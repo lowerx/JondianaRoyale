@@ -4,8 +4,9 @@
 
 [node name="Title" type="CanvasLayer"]
 layer = -100
-scale = Vector2( 0.56, 0.56 )
-transform = Transform2D( 0.56, 0, 0, 0.56, 0, 0 )
+offset = Vector2( -75, 0 )
+scale = Vector2( 0.834, 0.834 )
+transform = Transform2D( 0.834, 0, 0, 0.834, -75, 0 )
 
 [node name="TitleBackground" type="TextureRect" parent="."]
 margin_right = 40.0

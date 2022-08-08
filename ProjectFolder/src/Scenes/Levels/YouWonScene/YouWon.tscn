@@ -11,10 +11,11 @@ font_data = ExtResource( 2 )
 [node name="YouWon" type="Node2D"]
 
 [node name="YouFoundTheLamaLabel" type="Label" parent="."]
-margin_left = 245.0
-margin_top = 86.0
-margin_right = 814.0
-margin_bottom = 157.0
+margin_left = 320.0
+margin_top = 150.0
+margin_right = 889.0
+margin_bottom = 221.0
+rect_scale = Vector2( 1.5, 1.5 )
 custom_fonts/font = SubResource( 1 )
 text = "You found the lama!!!"
 align = 1
@@ -23,8 +24,9 @@ uppercase = true
 
 [node name="Lama" type="CanvasLayer" parent="."]
 layer = -100
-scale = Vector2( 0.56, 0.56 )
-transform = Transform2D( 0.56, 0, 0, 0.56, 0, 0 )
+offset = Vector2( -70, 0 )
+scale = Vector2( 0.83, 0.83 )
+transform = Transform2D( 0.83, 0, 0, 0.83, -70, 0 )
 follow_viewport_enable = true
 
 [node name="TextureRect" type="TextureRect" parent="Lama"]
@@ -37,4 +39,4 @@ stream = ExtResource( 3 )
 autoplay = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 513, 303 )
+position = Vector2( 720, 450 )

@@ -7,6 +7,8 @@ export var time = 0.00
 var start = true
 var _game_scene = false
 
+var level_number = 1
+
 var location = {
 	"bushes": 0.00,
 	"trees": 0.00
