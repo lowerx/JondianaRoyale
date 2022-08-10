@@ -91,6 +91,10 @@ func _on_ShootTimer_timeout() -> void:
 
 func _on_DeathTimer_timeout():
 	
+	AutoLoad.level += 1
+	 
+	AutoLoad.save(AutoLoad.level, AutoLoad.score, AutoLoad.gametime)
+	
 	AutoLoad.reset_values()
 	get_tree().change_scene(next_scene_path)
 	

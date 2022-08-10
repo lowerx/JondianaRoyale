@@ -4,6 +4,8 @@ signal update
 
 export var time = 0.00
 
+const SAVE_FILE_PATH := "user://game.save"
+
 var start = true
 var _game_scene = false
 
@@ -14,7 +16,9 @@ var location = {
 	"trees": 0.00
 }
 
-var level = 12.0
+var level = 0.0
+var score = 0.0
+var gametime = 0.0
 
 var ability = {
 	"name": null
@@ -43,6 +47,8 @@ var player_dead : bool = false
 func _ready():
 	
 	randomize()
+	
+	self.load_save()
 
 
 func game_scene():
@@ -58,6 +64,46 @@ func not_game_scene():
 	_game_scene = false
 
 
+func save(level, score=null, gametime=null):
+	
+	var save_data := {}
+	
+	save_data["level"] = level
+	save_data["score"] = score
+	save_data["gametime"] = time
+	
+	var data_as_string := var2str(save_data)
+	
+	var file := File.new()
+	
+	file.open(SAVE_FILE_PATH, File.WRITE)
+	file.store_string(data_as_string)
+	file.close()
+
+
+func load_save():
+	
+	var file := File.new()
+	
+	file.open(SAVE_FILE_PATH, File.READ)
+	
+	var check = file.get_as_text()
+	
+	if len(check) > 0:
+	
+		var data : Dictionary = str2var(file.get_as_text())
+		
+		file.close()
+		
+		self.level = data["level"]
+		self.score = data["score"]
+		self.gametime = data["gametime"]
+	
+	else:
+		
+		file.close()
+
+
 func reset_values():
 	
 	get_tree().paused = false
@@ -66,8 +112,6 @@ func reset_values():
 		"bushes": 0.00,
 		"trees": 0.00
 	}
-
-	self.level = 12.0
 
 	self.ability = {
 		"name": null

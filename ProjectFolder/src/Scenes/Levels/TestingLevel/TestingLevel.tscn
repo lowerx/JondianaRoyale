@@ -143,7 +143,6 @@ tile_data = PoolIntArray( -3211275, 0, 0, -3211274, 0, 0, -3211273, 0, 0, -32112
 
 [node name="Boss" parent="." instance=ExtResource( 6 )]
 position = Vector2( 401, -746 )
-scale = Vector2( 1, 1 )
 
 [node name="Player" parent="." instance=ExtResource( 10 )]
 process_priority = 10
